@@ -1,14 +1,23 @@
 {
   "name": "shape-fp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Functional programming",
   "main": "lib/index.js",
   "typings": "lib/index",
-  "files": [ "lib/" ],
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/sekwiatkowski/shape-fp.git"
   },
   "author": "Sebastian E. Kwiatkowski",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }
