@@ -39,6 +39,13 @@ export class Box<X> {
 
     }
 
+    tee(f : (X) => void) : Box<X> {
+
+        f(this.x)
+
+        return this
+    }
+
 }
 
 export const box = <X>(value: X) => new Box(value)
