@@ -1,10 +1,8 @@
-import { Result } from './Result';
+import { Fork } from "./Fork";
 export declare class Task<E, S> {
-    private task;
-    constructor(task: () => Result<E, S>);
+    fork: Fork<E, S>;
+    constructor(fork: Fork<E, S>);
     map<T>(f: (S) => T): Task<E, T>;
-    fold<F, T>(onError: (E) => F, onSuccess: (S) => T): F | T;
-    pairBy<T>(f: (S) => T): Task<E, [S, T]>;
+    chain<T>(f: (S) => Task<E, T>): Task<E, T>;
 }
-export declare const task: <E, S>(task: () => Result<E, S>) => Task<E, S>;
-export declare const taskFromCallback: <E, S>(task: (callback: (errorValue: E, successValue: S) => any) => any) => Task<E, S>;
+export declare const task: <E, S>(fork: (reject: (error: E) => void, resolve: (success: S) => void) => void) => Task<E, S>;

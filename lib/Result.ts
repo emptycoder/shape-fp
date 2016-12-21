@@ -10,18 +10,3 @@ export interface Result<E, S> {
     pairBy<T>(f : (S) => T) : Result<E, S> | Result<E, [S, T]>
 
 }
-
-export const resultFromCallback = <E, S>(errorValue : E, successValue : S) : Result<E, S> => {
-
-    if(error == null) {
-
-        return success(errorValue)
-
-    }
-    else {
-
-        return error(successValue)
-
-    }
-
-}

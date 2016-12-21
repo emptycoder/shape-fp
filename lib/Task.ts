@@ -1,38 +1,43 @@
-import {Result, resultFromCallback} from './Result'
+import {Fork, Reject, Resolve} from "./Fork"
 
 export class Task<E, S> {
 
-    private task: () => Result<E, S>
+    fork: Fork<E, S>
 
-    constructor(task : () => Result<E, S>) {
+    constructor(fork : Fork<E, S>) {
 
-        this.task = task
-
-    }
-
-    map<T>(f : (S) => T) : Task<E, T> {
-
-        return new Task<E, T>(() => this.task().map(f))
+        this.fork = fork
 
     }
 
-    fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : F|T {
+    map <T>(f : (S) => T) {
 
-        return this.task().fold(onError, onSuccess)
+        const fork = this.fork;
+
+        return new Task((reject : Reject<E>, resolve: Resolve<T>) => {
+
+            return fork(
+                a => reject(a),
+                b => resolve(f(b)))
+
+        })
 
     }
 
-    pairBy<T>(f : (S) => T) : Task<E, [S, T]> {
+    chain<T>(f : (S) => Task<E, T>) {
 
-        return new Task<E, [S, T]>(() => this.task().pairBy(f))
+        const fork = this.fork;
+
+        return new Task<E, T>((reject : Reject<E>, resolve : Resolve<T>) =>
+
+            fork(
+                error => reject(error),
+                success => f(success).fork(reject, resolve)
+            )
+        )
 
     }
-
 
 }
 
-export const task = <E, S>(task : () => Result<E, S>) => new Task(task)
-
-export const taskFromCallback = <E, S>(task : (callback : ((errorValue : E, successValue : S) => any)) => any) =>
-
-    new Task<E, S>(() => task(resultFromCallback))
+export const task = <E, S>(fork : Fork<E, S>) => new Task(fork)
