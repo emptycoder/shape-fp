@@ -1,4 +1,4 @@
-import { Result } from "./Result";
+import { Result } from './Result';
 export declare class Task<E, S> {
     private task;
     constructor(task: () => Result<E, S>);
@@ -7,3 +7,4 @@ export declare class Task<E, S> {
     pairBy<T>(f: (S) => T): Task<E, [S, T]>;
 }
 export declare const task: <E, S>(task: () => Result<E, S>) => Task<E, S>;
+export declare const taskFromCallback: (task: (callback: (E: any, S: any) => any) => any) => Task<{}, {}>;

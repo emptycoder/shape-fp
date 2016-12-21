@@ -1,4 +1,4 @@
-import {Result} from "./Result"
+import {Result, resultFromCallback} from './Result'
 
 export class Task<E, S> {
 
@@ -32,3 +32,7 @@ export class Task<E, S> {
 }
 
 export const task = <E, S>(task : () => Result<E, S>) => new Task(task)
+
+export const taskFromCallback = (task : (callback : ((E, S) => any)) => any) =>
+
+    new Task(() => task(resultFromCallback))
