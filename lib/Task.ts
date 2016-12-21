@@ -33,6 +33,6 @@ export class Task<E, S> {
 
 export const task = <E, S>(task : () => Result<E, S>) => new Task(task)
 
-export const taskFromCallback = (task : (callback : ((E, S) => any)) => any) =>
+export const taskFromCallback = <E, S>(task : (callback : ((errorValue : E, successValue : S) => any)) => any) =>
 
-    new Task(() => task(resultFromCallback))
+    new Task<E, S>(() => task(resultFromCallback))
