@@ -22,9 +22,10 @@ export class Error<E, S> implements Result<E, S> {
 
     }
 
-    pairBy<T>(f : (S) => T) : Error<E, [S, T]> {
+    run(onError : (E) => void, onSuccess : (S) => void) {
 
-        return new Error<E, [S, T]>(this.error)
+        onError(this.error)
+
     }
 
 }

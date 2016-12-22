@@ -22,15 +22,9 @@ export class Success<E, S> implements Result<E, S> {
 
     }
 
-    pairBy<T>(f : (S) => T) : Success<E, [S, T]> {
+    run(onError : (E) => void, onSuccess : (S) => void) {
 
-        return this.map((x) => {
-
-            let pair : [S, T] = [ x, f(x) ]
-
-            return pair
-
-        })
+        onSuccess(this.success)
 
     }
 

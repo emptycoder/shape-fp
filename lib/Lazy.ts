@@ -29,17 +29,12 @@ export class Lazy<X> {
         return this.fold(identity)
     }
 
-    pairBy<Y>(f : (X) => Y) : Lazy<[X, Y]> {
+    run (f: (X) => void) {
 
-        return this.map((x) => {
-
-            let pair : [X, Y] = [ x, f(x) ]
-
-            return pair
-
-        })
+        f(this.g())
 
     }
+
 
 }
 

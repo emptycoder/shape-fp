@@ -27,23 +27,10 @@ export class Box<X> {
         return this.fold(identity)
     }
 
-    pairBy<Y>(f : (X) => Y) : Box<[X, Y]> {
-
-        return this.map((x) => {
-
-            let pair : [X, Y] = [ x, f(x) ]
-
-            return pair
-
-        })
-
-    }
-
-    tee(f : (X) => void) : Box<X> {
+    run (f: (X) => void) {
 
         f(this.x)
 
-        return this
     }
 
 }
