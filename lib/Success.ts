@@ -1,6 +1,6 @@
 import {Result} from "./Result"
 
-export class Success<E, S> implements Result<E, S> {
+export class Success<F, S> implements Result<F, S> {
 
     private success : S
 
@@ -10,21 +10,15 @@ export class Success<E, S> implements Result<E, S> {
 
     }
 
-    map<T>(f : (S) => T) : Success<E, T> {
+    map<T>(f : (S) => T) : Success<F, T> {
 
-        return new Success<E, T>(f(this.success))
+        return new Success<F, T>(f(this.success))
 
     }
 
     fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : T {
 
         return onSuccess(this.success)
-
-    }
-
-    run(onError : (E) => void, onSuccess : (S) => void) {
-
-        onSuccess(this.success)
 
     }
 

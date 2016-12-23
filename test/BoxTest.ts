@@ -4,11 +4,13 @@ import { box } from "../lib/Box"
 
 describe('Box', () => {
 
-    it('should be able to cause a side-effect', () => {
+    it('should be able to cause a side-effect and then return itself', () => {
 
         let value = 1
 
-        box(1).run(x => value += x)
+        assert.equal(
+            box(1).tee(x => value += x).get(),
+            1)
 
         assert.equal(
             value,

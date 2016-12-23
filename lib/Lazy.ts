@@ -29,13 +29,6 @@ export class Lazy<X> {
         return this.fold(identity)
     }
 
-    run (f: (X) => void) {
-
-        f(this.g())
-
-    }
-
-
 }
 
 export const lazy = <X>(g: () => X) => new Lazy(g)

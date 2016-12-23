@@ -4,6 +4,6 @@ export declare class Lazy<X> {
     map<Y>(f: (X) => Y): Lazy<Y>;
     fold<Y>(f: (X) => Y): Y;
     get(): any;
-    run(f: (X) => void): void;
+    pairBy<Y>(f: (X) => Y): Lazy<[X, Y]>;
 }
 export declare const lazy: <X>(g: () => X) => Lazy<X>;

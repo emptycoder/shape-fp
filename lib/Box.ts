@@ -27,12 +27,6 @@ export class Box<X> {
         return this.fold(identity)
     }
 
-    run (f: (X) => void) {
-
-        f(this.x)
-
-    }
-
 }
 
 export const box = <X>(value: X) => new Box(value)

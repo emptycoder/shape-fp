@@ -1,41 +1,34 @@
-import {Box} from "./Box"
+import {Fork, Reject, Resolve} from "./Fork"
 
-export class Task<E, S> {
+export class Task<F, S> {
 
-    private fork: <F,T>(reject : (E) => F, resolve: (S) => T) => F|T
+    fork: Fork<F, S>
 
-    constructor(fork : <F,T>(reject : (E) => F, resolve: (S) => T) => F|T) {
+    constructor(fork : Fork<F, S>) {
 
         this.fork = fork
 
     }
 
-    // The success value of the task is mapped.
-    map <F, M, N>(f : (S) => M) : Task<E, M>{
-
-        const fork = this.fork
-
-        return new Task<F, M>((reject : (E) => F, resolve: (M) => N) =>
-
-            fork(
-                (error : E) => reject(error),
-                (success : S) => resolve(f(success))
-            )
-
-        )
-
-    }
-
-    // Chain returns a new task.
-    // Upon forking the new task, the old task is forked first.
-    // The old task is rejected with the new reject function.
-    // The result of the first task is mapped before the second task is forked.
-
-    chain<F, C, D>(f : (S) => Task<E, S>) {
+    map <T>(f : (S) => T) : Task<F, T> {
 
         const fork = this.fork;
 
-        return new Task<F, S>((reject : (E) => F, resolve : (S) => D) =>
+        return new Task((reject : Reject<F>, resolve: Resolve<T>) => {
+
+            return fork(
+                a => reject(a),
+                b => resolve(f(b)))
+
+        })
+
+    }
+
+    chain<T>(f : (S) => Task<F, T>) {
+
+        const fork = this.fork;
+
+        return new Task<F, T>((reject : Reject<F>, resolve : Resolve<T>) =>
 
             fork(
                 error => reject(error),
@@ -45,24 +38,6 @@ export class Task<E, S> {
 
     }
 
-    box<T>(f : (E) => T, g : (S) => T) : Box<T> {
-
-        const fork = this.fork(
-            (error : E) => f(error),
-            (success : S) => g(success)
-        )
-
-        return new Box(fork)
-    }
-
-    run (reject : (E) => void, resolve: (S) => void) {
-
-        this.fork(reject, resolve)
-    }
-
-
 }
 
-export const task = <E, F, S, T>(fork : <F,T>(reject : (E) => F, resolve: (S) => T) => F|T) =>
-
-    new Task<E, S>(fork)
+export const task = <E, S>(fork : Fork<E, S>) => new Task(fork)
