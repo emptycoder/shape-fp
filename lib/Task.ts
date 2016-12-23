@@ -1,34 +1,41 @@
-import {Fork, Reject, Resolve} from "./Fork"
+import {Box} from "./Box"
 
 export class Task<E, S> {
 
-    fork: Fork<E, S>
+    private fork: <F,T>(reject : (E) => F, resolve: (S) => T) => F|T
 
-    constructor(fork : Fork<E, S>) {
+    constructor(fork : <F,T>(reject : (E) => F, resolve: (S) => T) => F|T) {
 
         this.fork = fork
 
     }
 
-    map <T>(f : (S) => T) {
+    // The success value of the task is mapped.
+    map <F, M, N>(f : (S) => M) : Task<E, M>{
 
-        const fork = this.fork;
+        const fork = this.fork
 
-        return new Task((reject : Reject<E>, resolve: Resolve<T>) => {
+        return new Task<F, M>((reject : (E) => F, resolve: (M) => N) =>
 
-            return fork(
-                a => reject(a),
-                b => resolve(f(b)))
+            fork(
+                (error : E) => reject(error),
+                (success : S) => resolve(f(success))
+            )
 
-        })
+        )
 
     }
 
-    chain<T>(f : (S) => Task<E, T>) {
+    // Chain returns a new task.
+    // Upon forking the new task, the old task is forked first.
+    // The old task is rejected with the new reject function.
+    // The result of the first task is mapped before the second task is forked.
+
+    chain<F, C, D>(f : (S) => Task<E, S>) {
 
         const fork = this.fork;
 
-        return new Task<E, T>((reject : Reject<E>, resolve : Resolve<T>) =>
+        return new Task<F, S>((reject : (E) => F, resolve : (S) => D) =>
 
             fork(
                 error => reject(error),
@@ -38,6 +45,24 @@ export class Task<E, S> {
 
     }
 
+    box<T>(f : (E) => T, g : (S) => T) : Box<T> {
+
+        const fork = this.fork(
+            (error : E) => f(error),
+            (success : S) => g(success)
+        )
+
+        return new Box(fork)
+    }
+
+    run (reject : (E) => void, resolve: (S) => void) {
+
+        this.fork(reject, resolve)
+    }
+
+
 }
 
-export const task = <E, S>(fork : Fork<E, S>) => new Task(fork)
+export const task = <E, F, S, T>(fork : <F,T>(reject : (E) => F, resolve: (S) => T) => F|T) =>
+
+    new Task<E, S>(fork)

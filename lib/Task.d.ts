@@ -1,8 +1,10 @@
-import { Fork } from "./Fork";
+import { Box } from "./Box";
 export declare class Task<E, S> {
-    fork: Fork<E, S>;
-    constructor(fork: Fork<E, S>);
-    map<T>(f: (S) => T): Task<E, T>;
-    chain<T>(f: (S) => Task<E, T>): Task<E, T>;
+    private fork;
+    constructor(fork: <F, T>(reject: (E) => F, resolve: (S) => T) => F | T);
+    map<F, M, N>(f: (S) => M): Task<E, M>;
+    chain<F, C, D>(f: (S) => Task<E, S>): Task<F, S>;
+    box<T>(f: (E) => T, g: (S) => T): Box<T>;
+    run(reject: (E) => void, resolve: (S) => void): void;
 }
-export declare const task: <E, S>(fork: (reject: (error: E) => void, resolve: (success: S) => void) => void) => Task<E, S>;
+export declare const task: <E, F, S, T>(fork: <F, T>(reject: (E: any) => F, resolve: (S: any) => T) => F | T) => Task<E, S>;
