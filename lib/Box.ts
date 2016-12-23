@@ -22,9 +22,15 @@ export class Box<X> {
 
     }
 
-    get () {
+    get () : X {
 
         return this.fold(identity)
+    }
+
+    run(f : (X) => void) {
+
+        f(this.x)
+
     }
 
 }
