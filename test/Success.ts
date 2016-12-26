@@ -1,4 +1,3 @@
-/// <reference path="../typings/globals/mocha/index.d.ts" />
 import {success} from "../lib/Success"
 import identity from "../lib/Identity"
 import { assert } from 'chai';
