@@ -1,4 +1,4 @@
-import {Optional} from "./optional"
+import Optional from "./optional"
 
 export class Some<X> implements Optional<X> {
 
@@ -13,6 +13,12 @@ export class Some<X> implements Optional<X> {
     map<Y>(f : (X) => Y) : Some<Y> {
 
         return new Some(f(this.x))
+
+    }
+
+    run<Y>(onSome : (X) => void, onNone : () => void) {
+
+        onSome(this.x)
 
     }
 
