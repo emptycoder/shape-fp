@@ -1,4 +1,4 @@
-import {Result} from "./Result"
+import {Result} from "./result"
 
 export class Success<F, S> implements Result<F, S> {
 

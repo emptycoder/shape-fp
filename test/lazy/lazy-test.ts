@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import {lazy} from "../lib/lazy"
+import {lazy} from "../../lib/lazy/lazy"
 
 describe('Lazy', () => {
 

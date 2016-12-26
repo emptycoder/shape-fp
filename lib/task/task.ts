@@ -1,4 +1,4 @@
-import {Fork, Reject, Resolve} from "./Fork"
+import {Fork, Reject, Resolve} from "./fork"
 
 export class Task<F, S> {
 

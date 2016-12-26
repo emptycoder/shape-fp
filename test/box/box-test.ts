@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { box } from "../lib/box"
+import { box } from "../../lib/box/box"
 
 describe('Box', () => {
 

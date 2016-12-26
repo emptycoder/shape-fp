@@ -1,4 +1,4 @@
-import identity from './Identity'
+import identity from '../identity/identity'
 
 export class Lazy<X> {
 
