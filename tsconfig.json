@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "declaration": true,
-    "sourceMap": false,
+    "module": "commonjs",
     "typeRoots": [
       "node_modules/@types"
     ]
