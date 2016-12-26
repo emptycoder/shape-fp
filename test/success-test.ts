@@ -1,5 +1,5 @@
-import {success} from "../lib/Success"
-import identity from "../lib/Identity"
+import {success} from "../lib/success"
+import identity from "../lib/identity"
 import { assert } from 'chai';
 
 describe('Success', () => {

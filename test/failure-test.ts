@@ -1,5 +1,5 @@
-import {failure} from "../lib/Failure"
-import identity from "../lib/Identity"
+import {failure} from "../lib/failure"
+import identity from "../lib/identity"
 import { assert } from 'chai';
 
 describe('Failure', () => {
