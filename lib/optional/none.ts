@@ -1,4 +1,5 @@
 import Optional from "./optional"
+import optional from "./helper"
 
 export class None<X> implements Optional<X> {
 
@@ -8,7 +9,7 @@ export class None<X> implements Optional<X> {
 
     map<Y>(f : (X) => Y) : None<Y> {
 
-        return this
+        return none<Y>()
 
     }
 
@@ -16,6 +17,17 @@ export class None<X> implements Optional<X> {
 
         onNone()
 
+    }
+
+    orElse(x: X | null): Optional<X> {
+
+        return optional(x)
+
+    }
+
+    get() : X|null {
+
+        return null
     }
 
 }

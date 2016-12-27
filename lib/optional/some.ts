@@ -22,6 +22,18 @@ export class Some<X> implements Optional<X> {
 
     }
 
+    orElse(x: X): Optional<X> {
+
+        return this
+
+    }
+
+    get() : X|null {
+
+        return this.x
+
+    }
+
 }
 
 export const some = <X>(value: X) => new Some(value)
