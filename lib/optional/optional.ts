@@ -2,9 +2,9 @@ interface Optional<X> {
 
     map<Y>(f : (X) => Y) : Optional<Y>
 
-    run(onSome : (X) => void, onNone : () => void)
+    run(onNone : () => void, onSome : (X) => void)
 
-    fold<Y>(onSome : (X) => Y, onNone: () => Y)
+    fold<Y>(onNone: () => Y, onSome : (X) => Y)
 
     orElse(x : X) : Optional<X>
 

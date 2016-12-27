@@ -16,13 +16,13 @@ export class Some<X> implements Optional<X> {
 
     }
 
-    fold<Y>(onSome: (X) => Y, onNone: () => Y) : Y {
+    fold<Y>(onNone: () => Y, onSome: (X) => Y) : Y {
 
         return onSome(this.x)
 
     }
 
-    run<Y>(onSome : (X) => void, onNone : () => void) {
+    run<Y>(onNone : () => void, onSome : (X) => void) {
 
         onSome(this.x)
 

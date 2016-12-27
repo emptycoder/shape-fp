@@ -13,18 +13,17 @@ export class None<X> implements Optional<X> {
 
     }
 
-    run<Y>(onSome : (X) => void, onNone : () => void) {
+    run<Y>(onNone : () => void, onSome : (X) => void) {
 
         onNone()
 
     }
 
-    fold<Y>(onSome: (X) => Y, onNone: () => Y) : Y {
+    fold<Y>(onNone: () => Y, onSome: (X) => Y) : Y {
 
         return onNone()
 
     }
-
 
     orElse(x: X | null): Optional<X> {
 
