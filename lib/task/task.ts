@@ -2,17 +2,17 @@ import {Fork, Reject, Resolve} from "./fork"
 
 export class Task<F, S> {
 
-    fork: Fork<F, S>
+    _fork: Fork<F, S>
 
     constructor(fork : Fork<F, S>) {
 
-        this.fork = fork
+        this._fork = fork
 
     }
 
     map <T>(f : (S) => T) : Task<F, T> {
 
-        const fork = this.fork;
+        const fork = this._fork;
 
         return new Task((reject : Reject<F>, resolve: Resolve<T>) => {
 
@@ -24,17 +24,42 @@ export class Task<F, S> {
 
     }
 
+    run (f : (S) => void) : Task<F, S> {
+
+        const fork = this._fork;
+
+        return new Task((reject : Reject<F>, resolve: Resolve<S>) => {
+
+            return fork(
+                failure => reject(failure),
+                success => {
+
+                    f(success)
+
+                    resolve(success)
+                })
+
+        })
+
+    }
+
     chain<T>(f : (S) => Task<F, T>) {
 
-        const fork = this.fork;
+        const fork = this._fork;
 
         return new Task<F, T>((reject : Reject<F>, resolve : Resolve<T>) =>
 
             fork(
                 error => reject(error),
-                success => f(success).fork(reject, resolve)
+                success => f(success)._fork(reject, resolve)
             )
         )
+
+    }
+
+    fork(reject : Reject<F> = _ => {}, resolve : Resolve<S> = _ => {}) {
+
+        this._fork(reject, resolve)
 
     }
 

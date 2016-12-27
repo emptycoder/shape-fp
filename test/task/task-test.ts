@@ -9,7 +9,7 @@ describe('Task', () => {
 
         resolved(1)
             .map(x => x + 1)
-            .fork(
+            ._fork(
                 assert.fail,
                 result => assert.equal(result, 2))
 
@@ -19,7 +19,7 @@ describe('Task', () => {
 
         rejected(1)
             .map(x => x + 1)
-            .fork(
+            ._fork(
                 assert.ok,
                 assert.fail)
 
