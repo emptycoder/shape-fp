@@ -12,7 +12,7 @@ import { Failure, failure } from './result/failure'
 import { Lazy, lazy } from './lazy/lazy'
 
 import { Fork, Resolve, Reject } from './task/fork'
-import { Task, task, rejected, resolved } from './task/task'
+import { Task, task, taskFromPromise, rejected, resolved } from './task/task'
 
 import { nth, randomIndex, randomElement } from './array/array'
 
@@ -30,8 +30,8 @@ export { Failure, failure }
 
 export { Lazy, lazy }
 
-export { Task, task }
-export { Fork, Resolve, Reject, rejected, resolved }
+export { Fork, Resolve, Reject }
+export { Task, task, taskFromPromise, rejected, resolved }
 
 export { identity }
 export { nth, randomIndex, randomElement }

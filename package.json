@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Functional programming",
   "main": "lib/index.ts",
   "files": [
@@ -17,6 +17,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@types/chai": "^3.4.34",
+    "@types/core-js": "^0.9.35",
     "@types/mocha": "^2.2.34",
     "@types/node": "^6.0.53",
     "chai": "^3.5.0",
