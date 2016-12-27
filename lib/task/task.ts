@@ -2,7 +2,7 @@ import {Fork, Reject, Resolve} from "./fork"
 
 export class Task<F, S> {
 
-    _fork: Fork<F, S>
+    private _fork: Fork<F, S>
 
     constructor(fork : Fork<F, S>) {
 

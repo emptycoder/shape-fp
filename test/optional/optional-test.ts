@@ -5,14 +5,14 @@ import optional from "../../lib/optional/helper"
 
 describe('Optional', () => {
 
-    it('should be able to run a side-effect on the value if there is one', () => {
+    it('should be able to run a side-effect on the value when there is one', () => {
 
         let actual = null
 
         some(1)
             .run(
-                x => actual = x,
-                () => {})
+                () => {},
+                x => { actual = x })
 
         assert.equal(
             actual,
@@ -21,14 +21,14 @@ describe('Optional', () => {
     })
 
 
-    it('should be able to run a side-effect if there is no value', () => {
+    it('should be able to run a side-effect when there is no value', () => {
 
         let actual = null
 
         none<number>()
             .run(
-                x => {},
-                () => actual = 2)
+                () => actual = 2,
+                x => {})
 
         assert.equal(
             actual,
