@@ -22,12 +22,6 @@ export class Some<X> implements Optional<X> {
 
     }
 
-    run<Y>(onNone : () => void, onSome : (X) => void) {
-
-        onSome(this.x)
-
-    }
-
     orElse(x: X): Optional<X> {
 
         return this
@@ -35,6 +29,12 @@ export class Some<X> implements Optional<X> {
     }
 
     get() : X|null {
+
+        return this.x
+
+    }
+
+    getOrDefault(x : X) : Optional<X> {
 
         return this.x
 

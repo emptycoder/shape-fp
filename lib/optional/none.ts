@@ -13,12 +13,6 @@ export class None<X> implements Optional<X> {
 
     }
 
-    run<Y>(onNone : () => void, onSome : (X) => void) {
-
-        onNone()
-
-    }
-
     fold<Y>(onNone: () => Y, onSome: (X) => Y) : Y {
 
         return onNone()
@@ -31,9 +25,16 @@ export class None<X> implements Optional<X> {
 
     }
 
+    getOrDefault(defaultValue : X) : Optional<X> {
+
+        return defaultValue
+
+    }
+
     get() : X|null {
 
         return null
+
     }
 
 }
