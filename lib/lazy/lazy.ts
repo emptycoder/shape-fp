@@ -1,4 +1,4 @@
-import identity from '../identity/identity'
+import identity from '../functions/identity'
 
 export class Lazy<X> {
 

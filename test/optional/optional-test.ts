@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import {some} from "../../lib/optional/some"
 import optional from "../../lib/optional/helper"
 
 describe('Optional', () => {

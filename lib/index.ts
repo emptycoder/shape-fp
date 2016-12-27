@@ -18,7 +18,7 @@ import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 
 import { nth, randomIndex, randomElement } from './array/array'
 
-import identity from './identity/identity'
+import identity from './functions/identity'
 
 export { Box, box }
 
