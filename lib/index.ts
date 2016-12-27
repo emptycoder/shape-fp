@@ -14,6 +14,8 @@ import { Lazy, lazy } from './lazy/lazy'
 import { Fork, Resolve, Reject } from './task/fork'
 import { Task, task, taskFromPromise, rejected, resolved } from './task/task'
 
+import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
+
 import { nth, randomIndex, randomElement } from './array/array'
 
 import identity from './identity/identity'
@@ -32,6 +34,8 @@ export { Lazy, lazy }
 
 export { Fork, Resolve, Reject }
 export { Task, task, taskFromPromise, rejected, resolved }
+
+export { conditionalIo, dontRun, run }
 
 export { identity }
 export { nth, randomIndex, randomElement }
