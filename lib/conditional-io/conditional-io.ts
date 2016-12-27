@@ -21,8 +21,8 @@ export class ConditionalIo<X> {
 
 }
 
+export const conditionalIo = (isSatisifed: boolean) => new ConditionalIo(isSatisifed)
+
 export const dontRun = conditionalIo(false)
 
 export const run = conditionalIo(true)
-
-export const conditionalIo = (isSatisifed: boolean) => new ConditionalIo(isSatisifed)
