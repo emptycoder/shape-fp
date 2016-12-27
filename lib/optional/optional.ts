@@ -4,6 +4,8 @@ interface Optional<X> {
 
     run(onSome : (X) => void, onNone : () => void)
 
+    fold<Y>(onSome : (X) => Y, onNone: () => Y)
+
     orElse(x : X) : Optional<X>
 
     get() : X|null

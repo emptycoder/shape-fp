@@ -17,8 +17,8 @@ export class Task<F, S> {
         return new Task((reject : Reject<F>, resolve: Resolve<T>) => {
 
             return fork(
-                a => reject(a),
-                b => resolve(f(b)))
+                failure => reject(failure),
+                success => resolve(f(success)))
 
         })
 
@@ -40,4 +40,8 @@ export class Task<F, S> {
 
 }
 
-export const task = <E, S>(fork : Fork<E, S>) => new Task(fork)
+export const task = <F, S>(fork : Fork<F, S>) => new Task(fork)
+
+export const rejected = <F, S>(failure : F) => new Task<F, S>((reject, _) => reject(failure))
+
+export const resolved = <F, S>(success : S) => new Task<F, S>((_, resolve) => resolve(success))
