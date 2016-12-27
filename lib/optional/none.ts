@@ -25,7 +25,7 @@ export class None<X> implements Optional<X> {
 
     }
 
-    getOrDefault(defaultValue : X) : Optional<X> {
+    getOrDefault(defaultValue : X) : X {
 
         return defaultValue
 

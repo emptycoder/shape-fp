@@ -34,7 +34,7 @@ export class Some<X> implements Optional<X> {
 
     }
 
-    getOrDefault(x : X) : Optional<X> {
+    getOrDefault(defaultValue : X) : X {
 
         return this.x
 
