@@ -1,18 +1,20 @@
-import { assert } from 'chai';
-import andThen from "../../lib/functions/andthen"
+import { assert } from 'chai'
+import forward from "../../lib/functions/forward"
 
-describe('andThen', () => {
+describe('forward', () => {
 
-    it('should map a value with the first function and then with the second function', () => {
+    it('should apply the first function and then the second function', () => {
 
-        const increment = (x) => x + 1
-        const square = (x) => x * x
-
-        const composition = andThen(increment, square)
+        const increment = x => x + 1
+        const square = x => x * x
 
         assert.equal(
-            composition(1),
-            4)
+            forward(increment, square)(2),
+            9)
+
+        assert.equal(
+            forward(square, increment)(2),
+            5)
 
     })
 

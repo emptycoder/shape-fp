@@ -19,6 +19,7 @@ import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 import { nth, randomIndex, randomElement } from './array/array'
 
 import identity from './functions/identity'
+import forward from './functions/forward'
 
 export { Box, box }
 
@@ -38,4 +39,6 @@ export { Task, task, taskFromPromise, rejected, resolved }
 export { conditionalIo, dontRun, run }
 
 export { identity }
+export { forward }
+
 export { nth, randomIndex, randomElement }
