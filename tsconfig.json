@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "module": "es5",
+    "module": "commonjs",
     "target": "es5",
     "moduleResolution": "node",
     "typeRoots": ["node_modules/@types"]
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
