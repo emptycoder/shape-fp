@@ -1,13 +1,13 @@
 {
   "name": "shape-fp",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Functional programming",
   "main": "lib/index.ts",
   "files": [
     "lib/"
   ],
   "scripts": {
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register test/**/*.ts"
+    "test": "rimraf test-stage && webpack --config webpack.test.config.js --target node && mocha test-stage/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,12 @@
     "@types/core-js": "^0.9.35",
     "@types/mocha": "^2.2.34",
     "@types/node": "^6.0.53",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
+    "require-all": "^2.1.0",
     "ts-node": "^1.7.2",
-    "typescript": "^2.1.4"
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0"
   }
 }

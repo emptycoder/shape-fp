@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "es5",
+    "target": "es5",
+    "moduleResolution": "node",
+    "typeRoots": ["node_modules/@types"]
+  }
+}
