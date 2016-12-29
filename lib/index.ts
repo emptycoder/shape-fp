@@ -17,7 +17,7 @@ import { Task, task, taskFromPromise, rejected, resolved } from './task/task'
 
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 
-import { nth, randomIndex, randomElement } from './array/array'
+import { randomNumber, nth, randomIndex, randomElement } from './array/array'
 
 import identity from './functions/identity'
 import forward from './functions/forward'

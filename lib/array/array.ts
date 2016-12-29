@@ -1,4 +1,4 @@
-const randomNumber = (from : number) => (to : number) =>
+export const randomNumber = (from : number) => (to : number) =>
 
     Math.floor(Math.random() * (to - from)) + from;
 
