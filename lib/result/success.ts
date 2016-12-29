@@ -1,5 +1,8 @@
 import {Result} from "./result"
 import {Failure} from "./failure"
+import {Task} from "../task/task"
+import {rejected} from "../task/task"
+import {resolved} from "../task/task"
 
 export class Success<F, S> implements Result<F, S> {
 
@@ -11,7 +14,7 @@ export class Success<F, S> implements Result<F, S> {
 
     }
 
-    map<T>(f : (S) => T) : Success<F, T> {
+    map<T>(f : (S) => T) : Result<F, T> {
 
         return new Success<F, T>(f(this.success))
 
@@ -32,6 +35,12 @@ export class Success<F, S> implements Result<F, S> {
     get() : F|S {
 
         return this.success
+
+    }
+
+    toTask(): Task<F, S> {
+
+        return resolved<F, S>(this.success)
 
     }
 

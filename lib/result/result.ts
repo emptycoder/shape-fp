@@ -1,3 +1,5 @@
+import {Task} from "../task/task"
+
 export interface Result<F, S> {
 
     map<T>(f : (S) => T) : Result<F, T>
@@ -7,5 +9,7 @@ export interface Result<F, S> {
     fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : F | T
 
     get() : F|S
+
+    toTask() : Task<F, S>
 
 }
