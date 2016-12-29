@@ -26,7 +26,7 @@ export class Success<F, S> implements Result<F, S> {
 
     }
 
-    fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : T {
+    fold<F, T>(onError : (F) => T, onSuccess : (S) => T) : T {
 
         return onSuccess(this.success)
 
@@ -35,6 +35,12 @@ export class Success<F, S> implements Result<F, S> {
     get() : F|S {
 
         return this.success
+
+    }
+
+    run(onError: (F) => void, onSuccess: (T) => void) {
+
+        onSuccess(this.success)
 
     }
 

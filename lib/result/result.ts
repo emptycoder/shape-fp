@@ -10,6 +10,8 @@ export interface Result<F, S> {
 
     get() : F|S
 
+    run(onNone: (F) => void, onSome : (S) => void)
+
     toTask() : Task<F, S>
 
 }

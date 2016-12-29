@@ -36,6 +36,12 @@ export class Failure<F, S> implements Result<F, S> {
 
     }
 
+    run(onError: (F) => void, onSuccess: (T) => void) {
+
+        onError(this.failure)
+
+    }
+
     toTask(): Task<F, S> {
 
         return rejected<F, S>(this.failure)
