@@ -1,6 +1,7 @@
 import {success} from "../../lib/result/success"
 import identity from "../../lib/functions/identity"
 import { assert } from 'chai';
+import {failure} from "../../lib/result/failure"
 
 describe('Success', () => {
 
@@ -19,5 +20,14 @@ describe('Success', () => {
             2)
 
     })
+
+    it('should form a chain', () => {
+
+        assert.equal(
+            success<string, number>(1).chain(x => failure('new failure')).get(),
+            'new failure')
+
+    })
+
 
 })

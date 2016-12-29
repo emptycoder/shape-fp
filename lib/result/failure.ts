@@ -16,6 +16,12 @@ export class Failure<F, S> implements Result<F, S> {
 
     }
 
+    chain<T>(f: (S) => T): Failure<F, T>|T {
+
+        return new Failure<F, T>(this.failure)
+
+    }
+
     fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : F {
 
         return onError(this.failure)

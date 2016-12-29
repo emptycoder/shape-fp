@@ -1,4 +1,5 @@
 import {Result} from "./result"
+import {Failure} from "./failure"
 
 export class Success<F, S> implements Result<F, S> {
 
@@ -13,6 +14,12 @@ export class Success<F, S> implements Result<F, S> {
     map<T>(f : (S) => T) : Success<F, T> {
 
         return new Success<F, T>(f(this.success))
+
+    }
+
+    chain<T>(f: (S) => T): Failure<F, T>|T {
+
+        return f(this.success)
 
     }
 
