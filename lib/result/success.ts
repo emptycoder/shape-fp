@@ -17,7 +17,7 @@ export class Success<F, S> implements Result<F, S> {
 
     }
 
-    chain<T>(f: (S) => T): Failure<F, T>|T {
+    chain<T>(f: (S) => Result<F, T>): Result<F, T> {
 
         return f(this.success)
 
