@@ -13,3 +13,4 @@ describe('Task', function () {
             .fork(chai_1.assert.ok, chai_1.assert.fail);
     });
 });
+//# sourceMappingURL=task-test.js.map

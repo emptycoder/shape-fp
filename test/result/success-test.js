@@ -10,3 +10,4 @@ describe('Success', function () {
         chai_1.assert.equal(success_1.success(1).map(function (x) { return x + 1; }).fold(identity_1.default, identity_1.default), 2);
     });
 });
+//# sourceMappingURL=success-test.js.map

@@ -1,7 +1,9 @@
-export interface Result<E, S> {
+export interface Result<F, S> {
 
-    map<T>(f : (S) => T) : Result<E, T>
+    map<T>(f : (S) => T) : Result<F, T>
 
     fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : F | T
+
+    get() : F|S
 
 }

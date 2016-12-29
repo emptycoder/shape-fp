@@ -22,6 +22,13 @@ export class Failure<F, S> implements Result<F, S> {
 
     }
 
+    get() : F|S {
+
+        return this.failure
+
+    }
+
+
 }
 
 export const failure = <F, S>(error: F) => new Failure<F, S>(error)

@@ -22,6 +22,12 @@ export class Success<F, S> implements Result<F, S> {
 
     }
 
+    get() : F|S {
+
+        return this.success
+
+    }
+
 }
 
 export const success = <E, S>(success: S) => new Success<E, S>(success)

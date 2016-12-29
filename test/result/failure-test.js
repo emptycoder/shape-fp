@@ -10,3 +10,4 @@ describe('Failure', function () {
         chai_1.assert.equal(failure_1.failure("failure").map(function (x) { return x + 1; }).fold(identity_1.default, identity_1.default), 'failure');
     });
 });
+//# sourceMappingURL=failure-test.js.map

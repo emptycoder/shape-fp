@@ -6,6 +6,7 @@ import { Some, some } from './optional/some'
 import { None, none } from './optional/none'
 
 import { Result } from './result/result'
+import { tryCatch } from './result/helper'
 import { Success, success } from './result/success'
 import { Failure, failure } from './result/failure'
 
@@ -28,6 +29,7 @@ export { Some, some }
 export { None, none }
 
 export { Result }
+export { tryCatch }
 export { Success, success }
 export { Failure, failure }
 
