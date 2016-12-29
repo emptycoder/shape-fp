@@ -1,4 +1,5 @@
 import identity from '../functions/identity'
+import {Result} from "../result/result"
 
 export class Box<X> {
 
@@ -25,11 +26,18 @@ export class Box<X> {
     get () : X {
 
         return this.fold(identity)
+
     }
 
     run(f : (X) => void) {
 
         f(this.x)
+
+    }
+
+    attempt<F, S>(f: (X) => Result<F, S>) {
+
+        return f(this.x)
 
     }
 

@@ -26,7 +26,7 @@ export class Task<F, S> {
 
     chain<T>(f : (S) => Task<F, T>) : Task<F, T> {
 
-        const fork = this._fork;
+        const fork = this._fork
 
         return new Task<F, T>((reject : Reject<F>, resolve : Resolve<T>) =>
 
