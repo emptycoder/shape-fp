@@ -12,38 +12,19 @@ export class Task<F, S> {
 
     map <T>(f : (S) => T) : Task<F, T> {
 
-        const fork = this._fork;
+        const fork = this._fork
 
-        return new Task((reject : Reject<F>, resolve: Resolve<T>) => {
+        return new Task((reject : Reject<F>, resolve: Resolve<T>) =>
 
-            return fork(
+            fork(
                 failure => reject(failure),
                 success => resolve(f(success)))
 
-        })
+        )
 
     }
 
-    run (f : (S) => void) : Task<F, S> {
-
-        const fork = this._fork;
-
-        return new Task((reject : Reject<F>, resolve: Resolve<S>) => {
-
-            return fork(
-                failure => reject(failure),
-                success => {
-
-                    f(success)
-
-                    resolve(success)
-                })
-
-        })
-
-    }
-
-    chain<T>(f : (S) => Task<F, T>) {
+    chain<T>(f : (S) => Task<F, T>) : Task<F, T> {
 
         const fork = this._fork;
 
@@ -51,8 +32,23 @@ export class Task<F, S> {
 
             fork(
                 error => reject(error),
-                success => f(success)._fork(reject, resolve)
+                success => f(success).fork(reject, resolve)
             )
+        )
+
+    }
+
+    orElse<G>(f : (F) => Task<G, S>) : Task<G, S> {
+
+        const fork = this._fork
+
+        return new Task((reject : Reject<G>, resolve: Resolve<S>) =>
+
+            fork(
+                (error) => f(error).fork(reject, resolve),
+                (success) => resolve(success)
+            )
+
         )
 
     }
@@ -62,6 +58,26 @@ export class Task<F, S> {
         this._fork(reject, resolve)
 
     }
+
+    run (f : (S) => void) : Task<F, S> {
+
+        const fork = this._fork;
+
+        return new Task((reject : Reject<F>, resolve: Resolve<S>) =>
+
+            fork(
+                failure => reject(failure),
+                success => {
+
+                    f(success)
+
+                    resolve(success)
+                })
+
+        )
+
+    }
+
 
 }
 

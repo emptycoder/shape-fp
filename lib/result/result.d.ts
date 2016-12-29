@@ -4,6 +4,6 @@ export interface Result<F, S> {
     chain<T>(f: (S) => Result<F, T>): Result<F, T>;
     fold<F, T>(onError: (E) => F, onSuccess: (S) => T): F | T;
     get(): F | S;
-    run(onNone: (F) => void, onSome: (S) => void): any;
+    run(onError: (F) => void, onSuccess: (S) => void): any;
     toTask(): Task<F, S>;
 }
