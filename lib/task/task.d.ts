@@ -1,4 +1,3 @@
-/// <reference types="core-js" />
 import { Fork, Reject, Resolve } from "./fork";
 export declare class Task<F, S> {
     private _fork;

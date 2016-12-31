@@ -12,11 +12,11 @@ export class Task<F, S> {
 
     map <T>(f : (S) => T) : Task<F, T> {
 
-        const fork = this._fork
+        const previousFork = this._fork
 
         return new Task((reject : Reject<F>, resolve: Resolve<T>) =>
 
-            fork(
+            previousFork(
                 failure => reject(failure),
                 success => resolve(f(success)))
 
@@ -26,11 +26,11 @@ export class Task<F, S> {
 
     chain<T>(f : (S) => Task<F, T>) : Task<F, T> {
 
-        const fork = this._fork
+        const previousFork = this._fork
 
         return new Task<F, T>((reject : Reject<F>, resolve : Resolve<T>) =>
 
-            fork(
+            previousFork(
                 error => reject(error),
                 success => f(success).fork(reject, resolve)
             )
@@ -40,13 +40,13 @@ export class Task<F, S> {
 
     orElse<G>(f : (F) => Task<G, S>) : Task<G, S> {
 
-        const fork = this._fork
+        const previousFork = this._fork
 
-        return new Task((reject : Reject<G>, resolve: Resolve<S>) =>
+        return new Task<G, S>((reject : Reject<G>, resolve: Resolve<S>) =>
 
-            fork(
-                (error) => f(error).fork(reject, resolve),
-                (success) => resolve(success)
+            previousFork(
+                error => f(error).fork(reject, resolve),
+                success => resolve(success)
             )
 
         )
@@ -61,17 +61,18 @@ export class Task<F, S> {
 
     run (f : (S) => void) : Task<F, S> {
 
-        const fork = this._fork;
+        const previousFork = this._fork
 
         return new Task((reject : Reject<F>, resolve: Resolve<S>) =>
 
-            fork(
+            previousFork(
                 failure => reject(failure),
                 success => {
 
                     f(success)
 
                     resolve(success)
+
                 })
 
         )

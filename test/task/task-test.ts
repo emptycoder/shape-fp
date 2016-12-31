@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import {resolved, rejected} from "../../lib/task/task"
+import {resolved, rejected, Task} from "../../lib/task/task"
 
 describe('Task', () => {
 
@@ -24,3 +24,4 @@ describe('Task', () => {
     })
 
 })
+

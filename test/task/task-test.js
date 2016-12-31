@@ -1,15 +1,15 @@
 "use strict";
-var chai_1 = require("chai");
-var task_1 = require("../../lib/task/task");
-describe('Task', function () {
-    it('should be able to work synchronously with a resolved value', function () {
+const chai_1 = require("chai");
+const task_1 = require("../../lib/task/task");
+describe('Task', () => {
+    it('should be able to work synchronously with a resolved value', () => {
         task_1.resolved(1)
-            .map(function (x) { return x + 1; })
-            .fork(chai_1.assert.fail, function (result) { return chai_1.assert.equal(result, 2); });
+            .map(x => x + 1)
+            .fork(chai_1.assert.fail, result => chai_1.assert.equal(result, 2));
     });
-    it('should be able to work synchronously with a rejected value', function () {
+    it('should be able to work synchronously with a rejected value', () => {
         task_1.rejected(1)
-            .map(function (x) { return x + 1; })
+            .map(x => x + 1)
             .fork(chai_1.assert.ok, chai_1.assert.fail);
     });
 });
