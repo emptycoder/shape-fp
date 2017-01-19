@@ -13,7 +13,7 @@ import { Failure, failure } from './result/failure'
 import { Lazy, lazy } from './lazy/lazy'
 
 import { Fork, Resolve, Reject } from './task/fork'
-import { Task, task, taskFromPromise, rejected, resolved } from './task/task'
+import { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved } from './task/task'
 
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 

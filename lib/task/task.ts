@@ -86,6 +86,24 @@ export const task = <F, S>(fork : Fork<F, S>) => new Task(fork)
 
 export const taskFromPromise = <F, S>(promise : Promise<S>) => task<F, S>((reject, resolve) => promise.then(resolve, reject))
 
+export const taskFromAsynchronousFunction = <F, S>(asynchronousFunction : (callback : (failure : F, success : S) => any) => void) : Task<F, S> =>
+
+    task<F, S>((reject, resolve) => asynchronousFunction((failure : F, success : S) => {
+
+        if(failure) {
+
+            reject(failure)
+
+        }
+        else {
+
+            resolve(success)
+
+        }
+
+    }))
+
+
 export const rejected = <F, S>(failure : F) => new Task<F, S>((reject, _) => reject(failure))
 
 export const resolved = <F, S>(success : S) => new Task<F, S>((_, resolve) => resolve(success))
