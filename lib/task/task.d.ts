@@ -10,6 +10,6 @@ export declare class Task<F, S> {
     run(f: (S) => void): Task<F, S>;
 }
 export declare const task: <F, S>(fork: Fork<F, S>) => Task<F, S>;
-export declare const taskFromPromise: <T>(promise: Promise<T>) => Task<{}, {}>;
+export declare const taskFromPromise: <F, S>(promise: Promise<S>) => Task<F, S>;
 export declare const rejected: <F, S>(failure: F) => Task<F, S>;
 export declare const resolved: <F, S>(success: S) => Task<F, S>;
