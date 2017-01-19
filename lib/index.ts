@@ -36,7 +36,7 @@ export { Failure, failure }
 export { Lazy, lazy }
 
 export { Fork, Resolve, Reject }
-export { Task, task, taskFromPromise, rejected, resolved }
+export { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved }
 
 export { conditionalIo, dontRun, run }
 
