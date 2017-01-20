@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Functional programming",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -25,5 +25,8 @@
     "mocha": "^3.2.0",
     "ts-node": "^1.7.2",
     "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "run-parallel": "^1.1.6"
   }
 }

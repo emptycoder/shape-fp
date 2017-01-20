@@ -1,4 +1,5 @@
-import {Fork, Reject, Resolve} from "./fork"
+import {Fork, Reject, Resolve} from './fork'
+import parallel from 'run-parallel'
 
 export class Task<F, S> {
 
@@ -31,9 +32,41 @@ export class Task<F, S> {
         return new Task<F, T>((reject : Reject<F>, resolve : Resolve<T>) =>
 
             previousFork(
-                error => reject(error),
+                failure => reject(failure),
                 success => f(success).fork(reject, resolve)
             )
+        )
+
+    }
+
+    parallel(f : (S) => Array<(callback : (F, S) => any) => any>) : Task<F, S[]> {
+
+        const previousFork = this._fork
+
+        return new Task<F, S[]>((reject, resolve) =>
+
+            previousFork(
+                failure => reject(failure),
+                success => parallel(
+                    f(success),
+                    (err, results) => {
+
+                        if(err) {
+
+                            reject(err)
+
+                        }
+                        else {
+
+                            resolve(results)
+
+                        }
+
+                    }
+                )
+
+            )
+
         )
 
     }
