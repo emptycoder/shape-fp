@@ -1,5 +1,5 @@
 import {Fork, Reject, Resolve} from './fork'
-import parallel from 'run-parallel'
+import parallel = require('run-parallel')
 
 export class Task<F, S> {
 
@@ -39,7 +39,7 @@ export class Task<F, S> {
 
     }
 
-    parallel(f : (S) => Array<(callback : (F, S) => any) => any>) : Task<F, S[]> {
+    parallel(f : (S) => Array<Task<F, S>>) : Task<F, S[]> {
 
         const previousFork = this._fork
 
@@ -48,7 +48,15 @@ export class Task<F, S> {
             previousFork(
                 failure => reject(failure),
                 success => parallel(
-                    f(success),
+
+                    f(success).map(task =>
+
+                        callback => task.fork(
+                            rejected => callback(rejected, null),
+                            resolved => callback(null, resolved)
+                        )
+
+                    ),
                     (err, results) => {
 
                         if(err) {
