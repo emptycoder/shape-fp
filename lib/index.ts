@@ -14,6 +14,7 @@ import { Lazy, lazy } from './lazy/lazy'
 
 import { Fork, Resolve, Reject } from './task/fork'
 import { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved } from './task/task'
+import { createTaskWaterfall } from './task/waterfall'
 
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 
