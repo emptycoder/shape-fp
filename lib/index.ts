@@ -38,10 +38,11 @@ export { Lazy, lazy }
 
 export { Fork, Resolve, Reject }
 export { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved }
+export { createTaskWaterfall }
 
 export { conditionalIo, dontRun, run }
 
 export { identity }
 export { forward }
 
-export { nth, randomIndex, randomElement }
+export { randomNumber, nth, randomIndex, randomElement }
