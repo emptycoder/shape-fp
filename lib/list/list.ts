@@ -32,9 +32,9 @@ export class List<X> {
 
     }
 
-    run(f : (X) => void) {
+    run(f : (array : X[]) => void) {
 
-        this.xs.forEach(f)
+        f(this.xs)
 
     }
 

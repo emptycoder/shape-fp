@@ -5,6 +5,6 @@ export declare class List<X> {
     chain<Y>(f: (X) => List<Y>): List<Y>;
     fold<Y>(f: (X) => Y): Y[];
     get(): X[];
-    run(f: (X) => void): void;
+    run(f: (array: X[]) => void): void;
 }
 export declare const list: <X>(array: X[]) => List<X>;
