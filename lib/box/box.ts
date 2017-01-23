@@ -25,7 +25,7 @@ export class Box<X> {
 
     get () : X {
 
-        return this.fold(identity)
+        return this.x
 
     }
 
