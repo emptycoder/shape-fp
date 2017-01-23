@@ -1,29 +1,52 @@
 import {Task} from './task'
-import {head, tail} from '../array/array'
 import {task} from './task'
-import {box} from '../box/box'
 import parallel = require('run-parallel')
+import series = require('run-series')
+import {resolved} from './task'
 
 export class TaskList<F, S> {
 
-    private tasks : Task<F, S>[]
+    private tasks : ((callback : (F, S) => any) => any)[]
 
     constructor(tasks : Task<F, S>[]) {
 
-        this.tasks = tasks
+        this.tasks = tasks.map(task =>
+
+            callback => task.fork(
+                rejected => callback(rejected, null),
+                resolved => callback(null, resolved)
+            )
+        )
 
     }
 
-    series() : Task<F, S> {
+    private createCallback(reject : (F) => any, resolve : (S) => any) {
 
-        return tail(this.tasks)
-            .reduce(
-                (series, task) =>
+        return (err, results) => {
 
-                    series.chain(() => task)
+            if(err) {
 
-                ,
-                head(this.tasks))
+                reject(err)
+
+            }
+            else {
+
+                resolve(results)
+
+            }
+        }
+    }
+
+    series() : Task<F, S[]> {
+
+        return task<F, S[]>((reject, resolve) =>
+
+            series(
+                this.tasks,
+                this.createCallback(reject, resolve)
+            )
+
+        )
     }
 
     parallel() : Task<F, S[]> {
@@ -31,29 +54,8 @@ export class TaskList<F, S> {
         return task<F, S[]>((reject, resolve) =>
 
             parallel(
-
-                this.tasks.map(task =>
-
-                    callback => task.fork(
-                        rejected => callback(rejected, null),
-                        resolved => callback(null, resolved)
-                    )
-
-                ),
-                (err, results) => {
-
-                    if(err) {
-
-                        reject(err)
-
-                    }
-                    else {
-
-                        resolve(results)
-
-                    }
-
-                }
+                this.tasks,
+                this.createCallback(reject, resolve)
             )
 
         )
