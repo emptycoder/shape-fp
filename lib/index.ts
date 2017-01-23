@@ -29,16 +29,18 @@ export { Lazy, lazy }
 import { Fork, Resolve, Reject } from './task/fork'
 import { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved } from './task/task'
 import { createTaskWaterfall } from './task/waterfall'
-
 export { Fork, Resolve, Reject }
 export { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, resolved }
 export { createTaskWaterfall }
 
+import { TaskList } from './task/task_list'
+export { TaskList }
+
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 export { conditionalIo, dontRun, run }
 
-import { randomNumber, nth, randomIndex, randomElement } from './array/array'
-export { randomNumber, nth, randomIndex, randomElement }
+import { randomNumber, nth, head, tail, randomIndex, randomElement } from './array/array'
+export { randomNumber, nth, head, tail, randomIndex, randomElement }
 
 import identity from './functions/identity'
 import forward from './functions/forward'

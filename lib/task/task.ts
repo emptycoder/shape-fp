@@ -39,46 +39,6 @@ export class Task<F, S> {
 
     }
 
-    parallel(f : (S) => Array<Task<F, S>>) : Task<F, S[]> {
-
-        const previousFork = this._fork
-
-        return new Task<F, S[]>((reject, resolve) =>
-
-            previousFork(
-                failure => reject(failure),
-                success => parallel(
-
-                    f(success).map(task =>
-
-                        callback => task.fork(
-                            rejected => callback(rejected, null),
-                            resolved => callback(null, resolved)
-                        )
-
-                    ),
-                    (err, results) => {
-
-                        if(err) {
-
-                            reject(err)
-
-                        }
-                        else {
-
-                            resolve(results)
-
-                        }
-
-                    }
-                )
-
-            )
-
-        )
-
-    }
-
     orElse<G>(f : (F) => Task<G, S>) : Task<G, S> {
 
         const previousFork = this._fork
