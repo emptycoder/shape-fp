@@ -9,5 +9,6 @@ export declare class List<X> {
     get(): X[];
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (X) => Task<F, S>): TaskList<F, S>;
+    flatten<Y>(f: (xs: X[]) => Y): Y;
 }
 export declare const list: <X>(array: X[]) => List<X>;

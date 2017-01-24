@@ -22,5 +22,16 @@ describe('List', () => {
 
     })
 
+    it('should make it possible flatten the items', () => {
+
+        let instance = list(['A', 'B'])
+
+        assert.deepEqual(
+            instance.flatten(item => item.join(' ')),
+            'A B')
+
+    })
+
+
 
 })

@@ -2,7 +2,6 @@ import {Task} from './task'
 import {task} from './task'
 import parallel = require('run-parallel')
 import series = require('run-series')
-import {resolved} from './task'
 
 export class TaskList<F, S> {
 

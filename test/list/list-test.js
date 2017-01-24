@@ -10,5 +10,9 @@ describe('List', function () {
         var f = function (x) { return x + 1; };
         chai_1.assert.deepEqual(instance.fold(f), instance.map(f).get());
     });
+    it('should make it possible flatten the items', function () {
+        var instance = list_1.list(['A', 'B']);
+        chai_1.assert.deepEqual(instance.flatten(function (item) { return item.join(' '); }), 'A B');
+    });
 });
 //# sourceMappingURL=list-test.js.map

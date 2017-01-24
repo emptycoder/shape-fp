@@ -48,6 +48,12 @@ export class List<X> {
 
     }
 
+    flatten<Y>(f : (xs : X[]) => Y) : Y {
+
+        return f(this.xs)
+
+    }
+
 }
 
 export const list = <X>(array : X[]) => new List(array)
