@@ -1,5 +1,5 @@
 import keys = require('lodash.keys')
 
-export const entries = <R>(obj : Object) : [string, R][] =>
+export const entries = <T, R>(obj : T) : [string, R][] =>
 
     keys(obj).map(key => [key, obj[key]])

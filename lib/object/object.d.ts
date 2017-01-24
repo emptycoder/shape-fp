@@ -1,1 +1,1 @@
-export declare const entries: <R>(obj: Object) => [string, R][];
+export declare const entries: <T, R>(obj: T) => [string, R][];
