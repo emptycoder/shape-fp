@@ -6,4 +6,4 @@ describe('Optional', function () {
         chai_1.assert.equal(helper_1.default(null).orElse(1).get(), 1);
     });
 });
-//# sourceMappingURL=optional-test.js.map
+//# sourceMappingURL=optional.test.js.map

@@ -6,4 +6,4 @@ describe('Box', function () {
         chai_1.assert.equal(box_1.box(1).fold(function (x) { return x + 1; }), 2);
     });
 });
-//# sourceMappingURL=box-test.js.map
+//# sourceMappingURL=box.test.js.map

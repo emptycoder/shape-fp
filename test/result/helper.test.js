@@ -9,4 +9,4 @@ describe('tryFromCatch', function () {
         chai_1.assert.deepEqual(helper_1.tryCatch(function () { return JSON.parse('{key: "value"}'); }).get().name, "SyntaxError");
     });
 });
-//# sourceMappingURL=helper-test.js.map
+//# sourceMappingURL=helper.test.js.map

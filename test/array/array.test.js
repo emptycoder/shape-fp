@@ -9,4 +9,4 @@ describe('nth', function () {
         chai_1.assert.equal(array_1.nth(array, 2), 3);
     });
 });
-//# sourceMappingURL=array-test.js.map
+//# sourceMappingURL=array.test.js.map

@@ -17,4 +17,4 @@ describe('Lazy', function () {
         chai_1.assert.equal(value, 'changed');
     });
 });
-//# sourceMappingURL=lazy-test.js.map
+//# sourceMappingURL=lazy.test.js.map

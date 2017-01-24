@@ -15,4 +15,4 @@ describe('List', function () {
         chai_1.assert.deepEqual(instance.flatten(function (item) { return item.join(' '); }), 'A B');
     });
 });
-//# sourceMappingURL=list-test.js.map
+//# sourceMappingURL=list.test.js.map

@@ -14,4 +14,4 @@ describe('Success', function () {
         chai_1.assert.equal(success_1.success(1).chain(function (x) { return failure_1.failure('new failure'); }).get(), 'new failure');
     });
 });
-//# sourceMappingURL=success-test.js.map
+//# sourceMappingURL=success.test.js.map

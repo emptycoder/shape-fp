@@ -9,4 +9,4 @@ describe('forward', function () {
         chai_1.assert.equal(forward_1.default(square, increment)(2), 5);
     });
 });
-//# sourceMappingURL=forward-test.js.map
+//# sourceMappingURL=forward.test.js.map
