@@ -39,8 +39,11 @@ export { TaskList }
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 export { conditionalIo, dontRun, run }
 
-import { randomNumber, nth, head, tail, randomIndex, randomElement } from './array/array'
-export { randomNumber, nth, head, tail, randomIndex, randomElement }
+import { randomNumber, nth, randomIndex, randomElement } from './array/array'
+export { randomNumber, nth, randomIndex, randomElement }
+
+import { entries } from './object/object'
+export { entries }
 
 import identity from './functions/identity'
 import forward from './functions/forward'
