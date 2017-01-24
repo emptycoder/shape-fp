@@ -1,6 +1,7 @@
 import {Task} from '../task/task'
 import {taskList} from '../task/task_list'
 import {TaskList} from '../task/task_list'
+import {Box, box} from '../box/box'
 
 export class List<X> {
 
@@ -36,6 +37,12 @@ export class List<X> {
 
     }
 
+    flatten<Y>(f : (xs : X[]) => Y) : Y {
+
+        return f(this.xs)
+
+    }
+
     run(f : (array : X[]) => void) {
 
         f(this.xs)
@@ -48,9 +55,9 @@ export class List<X> {
 
     }
 
-    flatten<Y>(f : (xs : X[]) => Y) : Y {
+    box<Y>(f : (xs : X[]) => Y) : Box<Y> {
 
-        return f(this.xs)
+        return box(f(this.xs))
 
     }
 
