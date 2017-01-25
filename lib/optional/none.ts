@@ -7,13 +7,13 @@ export class None<X> implements Optional<X> {
 
     }
 
-    map<Y>(f : (X) => Y) : None<Y> {
+    map<Y>(f : (x : X) => Y) : None<Y> {
 
         return none<Y>()
 
     }
 
-    fold<Y>(onNone: () => Y, onSome: (X) => Y) : Y {
+    fold<Y>(onNone: () => Y, onSome: (x : X) => Y) : Y {
 
         return onNone()
 

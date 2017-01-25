@@ -10,7 +10,7 @@ export class Lazy<X> {
 
     }
 
-    map<Y>(f : (X) => Y) : Lazy<Y> {
+    map<Y>(f : (x : X) => Y) : Lazy<Y> {
 
         let fg = () => f(this.g())
 
@@ -18,7 +18,7 @@ export class Lazy<X> {
 
     }
 
-    fold<Y>(f : (X) => Y) : Y {
+    fold<Y>(f : (x : X) => Y) : Y {
 
         return f(this.g())
 
@@ -29,7 +29,7 @@ export class Lazy<X> {
         return this.fold(identity)
     }
 
-    run(f : (X) => void) {
+    run(f : (x : X) => void) {
 
         f(this.g())
 

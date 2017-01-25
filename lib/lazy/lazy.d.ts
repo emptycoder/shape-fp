@@ -1,9 +1,9 @@
 export declare class Lazy<X> {
     private g;
     constructor(g: () => X);
-    map<Y>(f: (X) => Y): Lazy<Y>;
-    fold<Y>(f: (X) => Y): Y;
+    map<Y>(f: (x: X) => Y): Lazy<Y>;
+    fold<Y>(f: (x: X) => Y): Y;
     get(): X;
-    run(f: (X) => void): void;
+    run(f: (x: X) => void): void;
 }
 export declare const lazy: <X>(g: () => X) => Lazy<X>;

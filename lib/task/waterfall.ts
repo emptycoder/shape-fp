@@ -7,7 +7,7 @@ export function createTaskWaterfall<F, S>() {
 
 export class TaskWaterfallFactory<F, S> {
 
-    using(f : (S) => Task<F, S>) : UsingTaskWaterfallFactory<F, S> {
+    using(f : (s : S) => Task<F, S>) : UsingTaskWaterfallFactory<F, S> {
 
         return new UsingTaskWaterfallFactory<F, S>(f)
 
@@ -17,9 +17,9 @@ export class TaskWaterfallFactory<F, S> {
 
 export class UsingTaskWaterfallFactory<F, S> {
 
-    private f : (S) => Task<F, S>
+    private f : (s : S) => Task<F, S>
 
-    constructor(f : (S) => Task<F, S>) {
+    constructor(f : (s : S) => Task<F, S>) {
 
         this.f = f
     }
@@ -34,10 +34,10 @@ export class UsingTaskWaterfallFactory<F, S> {
 
 export class QuantifiedUsingTaskWaterfallFactory<F, S> {
 
-    private f : (S) => Task<F, S>
+    private f : (s : S) => Task<F, S>
     private times : number
 
-    constructor(f : (S) => Task<F, S>, times : number) {
+    constructor(f : (s : S) => Task<F, S>, times : number) {
 
         this.f = f
         this.times = times

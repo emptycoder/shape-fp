@@ -1,2 +1,2 @@
-declare const forward: <X, Y, Z>(f: (X: any) => Y, g: (Y: any) => Z) => (x: any) => Z;
+declare const forward: <X, Y, Z>(f: (x: X) => Y, g: (y: Y) => Z) => (x: any) => Z;
 export default forward;

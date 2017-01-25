@@ -5,7 +5,7 @@ describe('Task', () => {
 
     it('should be able to work synchronously with a resolved value', () => {
 
-        resolved(1)
+        resolved<any, number>(1)
             .map(x => x + 1)
             .fork(
                 assert.fail,
@@ -15,7 +15,7 @@ describe('Task', () => {
 
     it('should be able to work synchronously with a rejected value', () => {
 
-        rejected(1)
+        rejected<any, number>(1)
             .map(x => x + 1)
             .fork(
                 assert.ok,

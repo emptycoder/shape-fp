@@ -1,5 +1,3 @@
-import {success} from "../../lib/result/success"
-import identity from "../../lib/functions/identity"
 import { assert } from 'chai';
 import {tryCatch} from "../../lib/result/helper"
 

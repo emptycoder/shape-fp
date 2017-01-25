@@ -10,13 +10,13 @@ export class Some<X> implements Optional<X> {
 
     }
 
-    map<Y>(f : (X) => Y) : Some<Y> {
+    map<Y>(f : (x : X) => Y) : Some<Y> {
 
         return new Some(f(this.x))
 
     }
 
-    fold<Y>(onNone: () => Y, onSome: (X) => Y) : Y {
+    fold<Y>(onNone: () => Y, onSome: (x : X) => Y) : Y {
 
         return onSome(this.x)
 

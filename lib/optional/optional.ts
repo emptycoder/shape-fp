@@ -1,8 +1,8 @@
 interface Optional<X> {
 
-    map<Y>(f : (X) => Y) : Optional<Y>
+    map<Y>(f : (x : X) => Y) : Optional<Y>
 
-    fold<Y>(onNone: () => Y, onSome : (X) => Y)
+    fold<Y>(onNone: () => Y, onSome : (x : X) => Y)
 
     orElse(x : X) : Optional<X>
 

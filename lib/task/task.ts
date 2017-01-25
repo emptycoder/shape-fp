@@ -11,7 +11,7 @@ export class Task<F, S> {
 
     }
 
-    map <T>(f : (S) => T) : Task<F, T> {
+    map <T>(f : (s : S) => T) : Task<F, T> {
 
         const previousFork = this._fork
 
@@ -25,7 +25,7 @@ export class Task<F, S> {
 
     }
 
-    chain<T>(f : (S) => Task<F, T>) : Task<F, T> {
+    chain<T>(f : (s : S) => Task<F, T>) : Task<F, T> {
 
         const previousFork = this._fork
 
@@ -39,7 +39,7 @@ export class Task<F, S> {
 
     }
 
-    orElse<G>(f : (F) => Task<G, S>) : Task<G, S> {
+    orElse<G>(f : (f : F) => Task<G, S>) : Task<G, S> {
 
         const previousFork = this._fork
 
@@ -54,13 +54,13 @@ export class Task<F, S> {
 
     }
 
-    fork(reject : Reject<F> = _ => {}, resolve : Resolve<S> = _ => {}) {
+    fork(reject : Reject<F> = () => {}, resolve : Resolve<S> = () => {}) {
 
         this._fork(reject, resolve)
 
     }
 
-    run (f : (S) => void) : Task<F, S> {
+    run (f : (s : S) => void) : Task<F, S> {
 
         const previousFork = this._fork
 

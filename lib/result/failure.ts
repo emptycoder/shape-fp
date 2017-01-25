@@ -12,33 +12,33 @@ export class Failure<F, S> implements Result<F, S> {
 
     }
 
-    map<T>(f : (S) => T) : Result<F, T> {
+    map<T>(f : (s : S) => T) : Result<F, T> {
 
         return new Failure<F, T>(this.failure)
 
     }
 
-    chain<T>(f: (S) => Result<F, T>): Result<F, T> {
+    chain<T>(f: (s : S) => Result<F, T>): Result<F, T> {
 
         return new Failure<F, T>(this.failure)
 
     }
 
-    fold<F, T>(onError : (E) => F, onSuccess : (S) => T) : F {
+    fold<G, T>(onFailure : (f : F) => G, onSuccess : (s : S) => T) : G {
 
-        return onError(this.failure)
+        return onFailure(this.failure)
 
     }
 
-    get() : F|S {
+    get() : F {
 
         return this.failure
 
     }
 
-    run(onError: (F) => void, onSuccess: (T) => void) {
+    run(onFailure: (f : F) => void, onSuccess: (s : S) => void) {
 
-        onError(this.failure)
+        onFailure(this.failure)
 
     }
 

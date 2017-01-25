@@ -3,11 +3,11 @@ import { Fork, Reject, Resolve } from './fork';
 export declare class Task<F, S> {
     private _fork;
     constructor(fork: Fork<F, S>);
-    map<T>(f: (S) => T): Task<F, T>;
-    chain<T>(f: (S) => Task<F, T>): Task<F, T>;
-    orElse<G>(f: (F) => Task<G, S>): Task<G, S>;
+    map<T>(f: (s: S) => T): Task<F, T>;
+    chain<T>(f: (s: S) => Task<F, T>): Task<F, T>;
+    orElse<G>(f: (f: F) => Task<G, S>): Task<G, S>;
     fork(reject?: Reject<F>, resolve?: Resolve<S>): void;
-    run(f: (S) => void): Task<F, S>;
+    run(f: (s: S) => void): Task<F, S>;
 }
 export declare const task: <F, S>(fork: Fork<F, S>) => Task<F, S>;
 export declare const taskFromPromise: <F, S>(promise: Promise<S>) => Task<F, S>;

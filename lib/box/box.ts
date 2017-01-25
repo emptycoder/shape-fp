@@ -11,13 +11,13 @@ export class Box<X> {
 
     }
 
-    map<Y>(f : (X) => Y) : Box<Y> {
+    map<Y>(f : (x : X) => Y) : Box<Y> {
 
         return new Box(f(this.x))
 
     }
 
-    fold<Y>(f : (X) => Y) : Y {
+    fold<Y>(f : (x : X) => Y) : Y {
 
         return f(this.x)
 
@@ -29,13 +29,13 @@ export class Box<X> {
 
     }
 
-    run(f : (X) => void) {
+    run(f : (x : X) => void) {
 
         f(this.x)
 
     }
 
-    attempt<F, S>(f: (X) => Result<F, S>) {
+    attempt<F, S>(f: (x : X) => Result<F, S>) {
 
         return f(this.x)
 

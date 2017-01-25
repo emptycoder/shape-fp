@@ -1,4 +1,4 @@
-const forward = <X, Y, Z>(f: (X) => Y, g: (Y) => Z) =>
+const forward = <X, Y, Z>(f: (x : X) => Y, g: (y : Y) => Z) =>
 
     x => g(f(x))
 

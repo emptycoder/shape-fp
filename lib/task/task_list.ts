@@ -19,7 +19,7 @@ export class TaskList<F, S> {
 
     }
 
-    private createCallback(reject : (F) => any, resolve : (S) => any) {
+    private createCallback(reject : (f : F) => any, resolve : (s : S[]) => any) {
 
         return (err, results) => {
 

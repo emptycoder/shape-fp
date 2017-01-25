@@ -13,19 +13,19 @@ export class List<X> {
 
     }
 
-    map<Y>(f : (X) => Y) : List<Y> {
+    map<Y>(f : (x : X) => Y) : List<Y> {
 
         return new List(this.xs.map(f))
 
     }
 
-    chain<Y>(f : (X) => List<Y>) : List<Y> {
+    chain<Y>(f : (x : X[]) => List<Y>) : List<Y> {
 
         return f(this.xs)
 
     }
 
-    fold<Y>(f : (X) => Y) : Y[] {
+    fold<Y>(f : (x : X) => Y) : Y[] {
 
         return this.xs.map(f)
 
@@ -49,7 +49,7 @@ export class List<X> {
 
     }
 
-    taskList<F, S>(f : (X) => Task<F, S>) : TaskList<F, S> {
+    taskList<F, S>(f : (x : X) => Task<F, S>) : TaskList<F, S> {
 
         return taskList(this.xs.map(f))
 

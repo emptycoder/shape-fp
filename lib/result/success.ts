@@ -14,31 +14,31 @@ export class Success<F, S> implements Result<F, S> {
 
     }
 
-    map<T>(f : (S) => T) : Result<F, T> {
+    map<T>(f : (s : S) => T) : Result<F, T> {
 
         return new Success<F, T>(f(this.success))
 
     }
 
-    chain<T>(f: (S) => Result<F, T>): Result<F, T> {
+    chain<T>(f: (s : S) => Result<F, T>): Result<F, T> {
 
         return f(this.success)
 
     }
 
-    fold<F, T>(onError : (F) => T, onSuccess : (S) => T) : T {
+    fold<G, T>(onFailure : (f : F) => G, onSuccess : (s : S) => T) : T {
 
         return onSuccess(this.success)
 
     }
 
-    get() : F|S {
+    get() : S {
 
         return this.success
 
     }
 
-    run(onError: (F) => void, onSuccess: (T) => void) {
+    run(onError: (f : F) => void, onSuccess: (s : S) => void) {
 
         onSuccess(this.success)
 
@@ -52,4 +52,4 @@ export class Success<F, S> implements Result<F, S> {
 
 }
 
-export const success = <E, S>(success: S) => new Success<E, S>(success)
+export const success = <F, S>(success: S) => new Success<F, S>(success)

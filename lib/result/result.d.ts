@@ -1,9 +1,9 @@
 import { Task } from "../task/task";
 export interface Result<F, S> {
-    map<T>(f: (S) => T): Result<F, T>;
-    chain<T>(f: (S) => Result<F, T>): Result<F, T>;
-    fold<F, T>(onError: (E) => F, onSuccess: (S) => T): F | T;
+    map<T>(f: (s: S) => T): Result<F, T>;
+    chain<T>(f: (s: S) => Result<F, T>): Result<F, T>;
+    fold<G, T>(onFailure: (f: F) => G, onSuccess: (s: S) => T): G | T;
     get(): F | S;
-    run(onError: (F) => void, onSuccess: (S) => void): any;
+    run(onFailure: (f: F) => void, onSuccess: (s: S) => void): any;
     toTask(): Task<F, S>;
 }
