@@ -1,5 +1,5 @@
-import identity from '../functions/identity'
-import {Result} from "../result/result"
+import {Result} from '../result/result'
+import {List, list} from '../list/list'
 
 export class Box<X> {
 
@@ -38,6 +38,12 @@ export class Box<X> {
     attempt<F, S>(f: (x : X) => Result<F, S>) {
 
         return f(this.x)
+
+    }
+
+    list<Y>(f : (x : X) => Y[]) : List<Y> {
+
+        return list(f(this.x))
 
     }
 

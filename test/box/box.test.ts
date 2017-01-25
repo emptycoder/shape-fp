@@ -11,4 +11,13 @@ describe('Box', () => {
 
     })
 
+    it('should mappable to a list', () => {
+
+        assert.deepEqual(
+            box(1).list(x => [x, x]).get(),
+            [1, 1])
+
+    })
+
+
 })
