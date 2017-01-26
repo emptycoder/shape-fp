@@ -19,6 +19,12 @@ export class List<X> {
 
     }
 
+    filter(f : (x : X) => boolean) : List<X> {
+
+        return new List(this.xs.filter(f))
+
+    }
+
     chain<Y>(f : (x : X[]) => List<Y>) : List<Y> {
 
         return f(this.xs)

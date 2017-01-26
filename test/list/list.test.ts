@@ -11,6 +11,14 @@ describe('List', () => {
 
     })
 
+    it('should be able to filter', () => {
+
+        assert.deepEqual(
+            list([1, 2, 3, 4]).filter(x => x % 2 == 0).get(),
+            [2, 4])
+
+    })
+
     it('should do the same thing for folding and mapping followed by getting', () => {
 
         let instance = list([1, 2])

@@ -5,6 +5,7 @@ export declare class List<X> {
     private xs;
     constructor(xs: X[]);
     map<Y>(f: (x: X) => Y): List<Y>;
+    filter(f: (x: X) => boolean): List<X>;
     chain<Y>(f: (x: X[]) => List<Y>): List<Y>;
     fold<Y>(f: (x: X) => Y): Y[];
     get(): X[];
