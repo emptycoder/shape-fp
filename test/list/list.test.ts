@@ -19,10 +19,14 @@ describe('List', () => {
 
     })
 
-    it('should be able to return the first item as an optional', () => {
+    it('should be able to return the first item that matches a predicate as an option', () => {
 
-        assert.isTrue(list([]).first().isEmpty())
-        assert.isTrue(list([1]).first().isDefined())
+        const isEven = (x : number) => x % 2 == 0
+
+        assert.isTrue(list([]).find(isEven).isEmpty())
+        assert.isTrue(list([1]).find(isEven).isEmpty())
+        assert.equal(list([1, 2]).find(isEven).get(), 2)
+        assert.equal(list([1, 2, 3, 4]).find(isEven).get(), 2)
 
     })
 

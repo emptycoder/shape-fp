@@ -9,8 +9,8 @@ export declare class List<X> {
     chain<Y>(f: (x: X[]) => List<Y>): List<Y>;
     fold<Y>(f: (x: X) => Y): Y[];
     get(): X[];
-    filter(f: (x: X) => boolean): List<X>;
-    first(): Optional<X>;
+    filter(p: (x: X) => boolean): List<X>;
+    find(p: (x: X) => boolean): Optional<X>;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
