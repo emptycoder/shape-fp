@@ -3,6 +3,8 @@ import {taskList} from '../task/task_list'
 import {TaskList} from '../task/task_list'
 import {Box, box} from '../box/box'
 import find = require('lodash.find')
+import first = require('lodash.first')
+import last = require('lodash.last')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 
@@ -43,6 +45,18 @@ export class List<X> {
     filter(p : (x : X) => boolean) : List<X> {
 
         return new List(this.xs.filter(p))
+
+    }
+
+    first() : Optional<X> {
+
+        return optional(first(this.xs))
+
+    }
+
+    last() : Optional<X> {
+
+        return optional(last(this.xs))
 
     }
 

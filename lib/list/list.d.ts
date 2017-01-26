@@ -10,6 +10,8 @@ export declare class List<X> {
     fold<Y>(f: (x: X) => Y): Y[];
     get(): X[];
     filter(p: (x: X) => boolean): List<X>;
+    first(): Optional<X>;
+    last(): Optional<X>;
     find(p: (x: X) => boolean): Optional<X>;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     run(f: (array: X[]) => void): void;
