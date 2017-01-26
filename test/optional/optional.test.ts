@@ -11,4 +11,22 @@ describe('Optional', () => {
 
     })
 
+    it('should be empty when null', () => {
+
+        const option = optional(null)
+
+        assert.isTrue(option.isEmpty())
+        assert.isFalse(option.isDefined())
+
+    })
+
+    it('should be empty when undefined', () => {
+
+        const option = optional(undefined)
+
+        assert.isTrue(option.isEmpty())
+        assert.isFalse(option.isDefined())
+
+    })
+
 })

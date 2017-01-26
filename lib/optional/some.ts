@@ -40,6 +40,18 @@ export class Some<X> implements Optional<X> {
 
     }
 
+    isDefined(): boolean {
+
+        return true
+
+    }
+
+    isEmpty(): boolean {
+
+        return false
+
+    }
+
 }
 
 export const some = <X>(value: X) => new Some(value)

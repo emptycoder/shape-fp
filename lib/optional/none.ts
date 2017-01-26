@@ -37,6 +37,18 @@ export class None<X> implements Optional<X> {
 
     }
 
+    isDefined(): boolean {
+
+        return false
+
+    }
+
+    isEmpty(): boolean {
+
+        return true
+
+    }
+
 }
 
 export const none = <X>() => new None<X>()

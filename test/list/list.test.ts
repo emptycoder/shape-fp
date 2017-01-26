@@ -19,6 +19,13 @@ describe('List', () => {
 
     })
 
+    it('should be able to return the first item as an optional', () => {
+
+        assert.isTrue(list([]).first().isEmpty())
+        assert.isTrue(list([1]).first().isDefined())
+
+    })
+
     it('should do the same thing for folding and mapping followed by getting', () => {
 
         let instance = list([1, 2])

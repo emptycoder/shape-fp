@@ -6,5 +6,7 @@ export declare class None<X> implements Optional<X> {
     orElse(x: X | null): Optional<X>;
     getOrDefault(defaultValue: X): X;
     get(): X | null;
+    isDefined(): boolean;
+    isEmpty(): boolean;
 }
 export declare const none: <X>() => None<X>;

@@ -7,5 +7,7 @@ export declare class Some<X> implements Optional<X> {
     orElse(x: X): Optional<X>;
     get(): X | null;
     getOrDefault(defaultValue: X): X;
+    isDefined(): boolean;
+    isEmpty(): boolean;
 }
 export declare const some: <X>(value: X) => Some<X>;

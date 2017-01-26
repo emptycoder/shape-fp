@@ -2,6 +2,9 @@ import {Task} from '../task/task'
 import {taskList} from '../task/task_list'
 import {TaskList} from '../task/task_list'
 import {Box, box} from '../box/box'
+import first = require('lodash.first')
+import optional from '../optional/helper'
+import Optional from '../optional/optional'
 
 export class List<X> {
 
@@ -16,12 +19,6 @@ export class List<X> {
     map<Y>(f : (x : X) => Y) : List<Y> {
 
         return new List(this.xs.map(f))
-
-    }
-
-    filter(f : (x : X) => boolean) : List<X> {
-
-        return new List(this.xs.filter(f))
 
     }
 
@@ -40,6 +37,20 @@ export class List<X> {
     get () : X[] {
 
         return this.xs
+
+    }
+
+    filter(f : (x : X) => boolean) : List<X> {
+
+        return new List(this.xs.filter(f))
+
+    }
+
+    first() : Optional<X> {
+
+        const x = first(this.xs)
+
+        return optional(x)
 
     }
 

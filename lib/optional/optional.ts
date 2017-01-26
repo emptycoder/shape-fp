@@ -10,6 +10,10 @@ interface Optional<X> {
 
     getOrDefault(defaultValue : X)
 
+    isDefined() : boolean
+
+    isEmpty() : boolean
+
 }
 
 export default Optional

@@ -4,5 +4,7 @@ interface Optional<X> {
     orElse(x: X): Optional<X>;
     get(): X | null;
     getOrDefault(defaultValue: X): any;
+    isDefined(): boolean;
+    isEmpty(): boolean;
 }
 export default Optional;
