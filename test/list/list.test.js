@@ -12,6 +12,10 @@ describe('List', function () {
         chai_1.assert.isTrue(list_1.list([1, 2]).contains(2));
         chai_1.assert.isNotTrue(list_1.list([1, 2]).contains(3));
     });
+    it('should be able to optionally return the index of a specified member', function () {
+        chai_1.assert.equal(list_1.list([1, 2]).indexOf(1).get(), 0);
+        chai_1.assert.isTrue(list_1.list([1, 2]).indexOf(3).isEmpty());
+    });
     it('should be able to return the first item that matches a predicate as an option', function () {
         var isEven = function (x) { return x % 2 == 0; };
         chai_1.assert.isTrue(list_1.list([]).find(isEven).isEmpty());

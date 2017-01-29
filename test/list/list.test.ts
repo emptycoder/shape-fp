@@ -26,6 +26,13 @@ describe('List', () => {
 
     })
 
+    it('should be able to optionally return the index of a specified member', () => {
+
+        assert.equal(list([1, 2]).indexOf(1).get(), 0)
+        assert.isTrue(list([1, 2]).indexOf(3).isEmpty())
+
+    })
+
     it('should be able to return the first item that matches a predicate as an option', () => {
 
         const isEven = (x : number) => x % 2 == 0

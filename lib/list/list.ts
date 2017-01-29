@@ -5,9 +5,13 @@ import {Box, box} from '../box/box'
 import find = require('lodash.find')
 import first = require('lodash.first')
 import last = require('lodash.last')
+import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
+import {None} from '../optional/none'
+import {none} from '../optional/none'
+import {some} from '../optional/some'
 
 export class List<X> {
 
@@ -70,6 +74,13 @@ export class List<X> {
     contains(x : X) : boolean {
 
         return includes(this.xs, x)
+
+    }
+
+    indexOf(x : X) : Optional<number> {
+
+        return box(indexOf(this.xs, x))
+            .fold(index => index == -1 ? none<number>() : some(index))
 
     }
 
