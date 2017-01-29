@@ -5,6 +5,7 @@ import {Box, box} from '../box/box'
 import find = require('lodash.find')
 import first = require('lodash.first')
 import last = require('lodash.last')
+import includes = require('lodash.includes')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 
@@ -63,6 +64,12 @@ export class List<X> {
     find(p : (x : X) => boolean) : Optional<X> {
 
         return optional(find(this.xs, p))
+
+    }
+
+    contains(x : X) : boolean {
+
+        return includes(this.xs, x)
 
     }
 

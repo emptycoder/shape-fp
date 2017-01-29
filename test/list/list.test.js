@@ -8,6 +8,10 @@ describe('List', function () {
     it('should be able to filter', function () {
         chai_1.assert.deepEqual(list_1.list([1, 2, 3, 4]).filter(function (x) { return x % 2 == 0; }).get(), [2, 4]);
     });
+    it('should be able to check if it includes a particular member', function () {
+        chai_1.assert.isTrue(list_1.list([1, 2]).contains(2));
+        chai_1.assert.isNotTrue(list_1.list([1, 2]).contains(3));
+    });
     it('should be able to return the first item that matches a predicate as an option', function () {
         var isEven = function (x) { return x % 2 == 0; };
         chai_1.assert.isTrue(list_1.list([]).find(isEven).isEmpty());

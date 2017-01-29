@@ -13,6 +13,7 @@ export declare class List<X> {
     first(): Optional<X>;
     last(): Optional<X>;
     find(p: (x: X) => boolean): Optional<X>;
+    contains(x: X): boolean;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;

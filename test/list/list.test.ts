@@ -19,6 +19,13 @@ describe('List', () => {
 
     })
 
+    it('should be able to check if it includes a particular member', () => {
+
+        assert.isTrue(list([1, 2]).contains(2))
+        assert.isNotTrue(list([1, 2]).contains(3))
+
+    })
+
     it('should be able to return the first item that matches a predicate as an option', () => {
 
         const isEven = (x : number) => x % 2 == 0
