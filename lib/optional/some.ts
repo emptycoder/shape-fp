@@ -1,4 +1,5 @@
 import Optional from "./optional"
+import {Box, box} from '../box/box'
 
 export class Some<X> implements Optional<X> {
 
@@ -49,6 +50,12 @@ export class Some<X> implements Optional<X> {
     isEmpty(): boolean {
 
         return false
+
+    }
+
+    box<Y>(onNone: () => Y, onSome: (x : X) => Y) : Box<Y> {
+
+        return box(onSome(this.x))
 
     }
 

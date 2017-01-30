@@ -1,4 +1,5 @@
 import Optional from "./optional";
+import { Box } from '../box/box';
 export declare class Some<X> implements Optional<X> {
     private x;
     constructor(x: X);
@@ -9,5 +10,6 @@ export declare class Some<X> implements Optional<X> {
     getOrDefault(defaultValue: X): X;
     isDefined(): boolean;
     isEmpty(): boolean;
+    box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
 export declare const some: <X>(value: X) => Some<X>;

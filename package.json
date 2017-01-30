@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "Functional programming",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
