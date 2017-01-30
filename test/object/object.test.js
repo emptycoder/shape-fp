@@ -12,4 +12,10 @@ describe('mapValues', function () {
         chai_1.assert.deepEqual(object_2.mapValues({ member: 1 }, function (number) { return number.toString(); }), { member: '1' });
     });
 });
+describe('fromPairs', function () {
+    it('should map an array of pairs to a dictionary', function () {
+        var dictionary = object_1.fromPairs([['first', 0], ['second', 1]]);
+        chai_1.assert.deepEqual(dictionary, { first: 0, second: 1 });
+    });
+});
 //# sourceMappingURL=object.test.js.map

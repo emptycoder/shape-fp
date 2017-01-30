@@ -9,4 +9,9 @@ describe('nth', function () {
         chai_1.assert.equal(array_1.nth(array, 2), 3);
     });
 });
+describe('indexed', function () {
+    it('should pair each item withs index', function () {
+        chai_1.assert.deepEqual(array_1.indexed(['first', 'second']), [['first', 0], ['second', 1]]);
+    });
+});
 //# sourceMappingURL=array.test.js.map

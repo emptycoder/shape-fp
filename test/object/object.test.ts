@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import {entries} from '../../lib/object/object'
+import {entries, fromPairs} from '../../lib/object/object'
 import {mapValues} from '../../lib/object/object'
 
 describe('entries', () => {
@@ -33,6 +33,21 @@ describe('mapValues', () => {
         assert.deepEqual(
             mapValues<NumberObject, number, StringObject, string>({ member: 1 }, number => number.toString()),
             { member: '1' }
+        )
+
+    })
+
+})
+
+describe('fromPairs', () => {
+
+    it('should map an array of pairs to a dictionary', () => {
+
+        let dictionary = fromPairs([['first', 0], ['second', 1]])
+
+        assert.deepEqual(
+            dictionary,
+            { first: 0, second: 1 }
         )
 
     })

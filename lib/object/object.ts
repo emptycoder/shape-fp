@@ -17,3 +17,24 @@ export function mapValues<T, TV, R, RV>(input : T, f : (value : TV) => RV) : R {
     return newObject as R
 
 }
+
+export interface Dictionary<T> {
+    [index: string]: T;
+}
+
+export function fromPairs <T>(pairs : [string, T][]) : Dictionary<T> {
+
+    const obj : Dictionary<T> = {}
+
+    pairs
+        .forEach(pair => {
+
+            const [key, value] = pair
+
+            obj[key] = value
+
+        })
+
+    return obj
+
+}
