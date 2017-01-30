@@ -1,3 +1,5 @@
+import {Box} from '../box/box'
+
 interface Optional<X> {
 
     map<Y>(f : (x : X) => Y) : Optional<Y>
@@ -14,7 +16,7 @@ interface Optional<X> {
 
     isEmpty() : boolean
 
-    box<Y>(onNone: () => Y, onSome : (x : X) => Y)
+    box<Y>(onNone: () => Y, onSome : (x : X) => Y) : Box<Y>
 
 }
 

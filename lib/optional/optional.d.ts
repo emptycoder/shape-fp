@@ -1,3 +1,4 @@
+import { Box } from '../box/box';
 interface Optional<X> {
     map<Y>(f: (x: X) => Y): Optional<Y>;
     fold<Y>(onNone: () => Y, onSome: (x: X) => Y): Y;
@@ -6,6 +7,6 @@ interface Optional<X> {
     getOrDefault(defaultValue: X): any;
     isDefined(): boolean;
     isEmpty(): boolean;
-    box<Y>(onNone: () => Y, onSome: (x: X) => Y): any;
+    box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
 export default Optional;
