@@ -8,7 +8,6 @@ import Optional from './optional/optional'
 import optional from './optional/helper'
 import { Some, some } from './optional/some'
 import { None, none } from './optional/none'
-
 export { Optional, optional }
 export { Some, some }
 export { None, none }
@@ -42,10 +41,17 @@ export { conditionalIo, dontRun, run }
 import { randomNumber, nth, randomIndex, randomElement } from './array/array'
 export { randomNumber, nth, randomIndex, randomElement }
 
-import { entries } from './object/object'
-export { entries }
+import { entries, mapValues, fromPairs } from './object/object'
+export { entries, mapValues, fromPairs }
+
+import Dictionary from './object/dictionary'
+export { Dictionary }
+
+import Constructor from './object/constructor'
+export { Constructor }
 
 import identity from './functions/identity'
-import forward from './functions/forward'
 export { identity }
+
+import forward from './functions/forward'
 export { forward }

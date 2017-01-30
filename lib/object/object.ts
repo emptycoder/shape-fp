@@ -1,3 +1,5 @@
+import {Dictionary} from './dictionary'
+
 //  There is currently no way in TypeScript to specify an object that is “not a primitive”.
 export function entries <R>(obj : any) : [string, R][] {
 
@@ -16,10 +18,6 @@ export function mapValues<T, TV, R, RV>(input : T, f : (value : TV) => RV) : R {
 
     return newObject as R
 
-}
-
-export interface Dictionary<T> {
-    [index: string]: T;
 }
 
 export function fromPairs <T>(pairs : [string, T][]) : Dictionary<T> {
