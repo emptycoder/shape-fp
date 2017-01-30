@@ -2,7 +2,7 @@ interface Optional<X> {
 
     map<Y>(f : (x : X) => Y) : Optional<Y>
 
-    fold<Y>(onNone: () => Y, onSome : (x : X) => Y)
+    fold<Y>(onNone: () => Y, onSome : (x : X) => Y) : Y
 
     orElse(x : X) : Optional<X>
 
@@ -13,6 +13,8 @@ interface Optional<X> {
     isDefined() : boolean
 
     isEmpty() : boolean
+
+    box<Y>(onNone: () => Y, onSome : (x : X) => Y)
 
 }
 
