@@ -32,5 +32,9 @@ describe('List', function () {
         var instance = list_1.list(['A', 'B']);
         chai_1.assert.deepEqual(instance.flatten(function (item) { return item.join(' '); }), 'A B');
     });
+    it('should return return a new list with unique items', function () {
+        var instance = list_1.list([1, 2, 2, 3, 3, 3]);
+        chai_1.assert.deepEqual(instance.unique().get(), [1, 2, 3,]);
+    });
 });
 //# sourceMappingURL=list.test.js.map

@@ -12,10 +12,11 @@ export declare class List<X> {
     filter(p: (x: X) => boolean): List<X>;
     first(): Optional<X>;
     last(): Optional<X>;
+    indexOf(x: X): Optional<number>;
     find(p: (x: X) => boolean): Optional<X>;
     contains(x: X): boolean;
-    indexOf(x: X): Optional<number>;
     flatten<Y>(f: (xs: X[]) => Y): Y;
+    unique(): List<X>;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
     box<Y>(f: (xs: X[]) => Y): Box<Y>;

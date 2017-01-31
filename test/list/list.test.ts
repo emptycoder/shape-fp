@@ -65,6 +65,14 @@ describe('List', () => {
 
     })
 
+    it('should return return a new list with unique items', () => {
 
+        let instance = list([1, 2, 2, 3, 3, 3])
+
+        assert.deepEqual(
+            instance.unique().get(),
+            [ 1, 2, 3, ])
+
+    })
 
 })

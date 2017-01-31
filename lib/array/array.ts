@@ -1,4 +1,3 @@
-import {list} from '../list/list'
 export const randomNumber = (from : number) => (to : number) =>
 
     Math.floor(Math.random() * (to - from)) + from;

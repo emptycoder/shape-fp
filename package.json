@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Functional programming",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -25,6 +25,7 @@
     "@types/lodash.indexof": "^4.0.1",
     "@types/lodash.isnil": "^4.0.0",
     "@types/lodash.last": "^3.0.0",
+    "@types/lodash.uniq": "^4.5.1",
     "@types/mocha": "^2.2.34",
     "@types/node": "^6.0.53",
     "chai": "^3.5.0",
@@ -39,6 +40,7 @@
     "lodash.indexof": "^4.0.5",
     "lodash.isnil": "^4.0.0",
     "lodash.last": "^3.0.0",
+    "lodash.uniq": "^4.5.0",
     "run-parallel": "^1.1.6",
     "run-series": "^1.1.4"
   }

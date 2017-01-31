@@ -7,6 +7,7 @@ import first = require('lodash.first')
 import last = require('lodash.last')
 import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
+import uniq = require('lodash.uniq')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {None} from '../optional/none'
@@ -65,6 +66,13 @@ export class List<X> {
 
     }
 
+    indexOf(x : X) : Optional<number> {
+
+        return box(indexOf(this.xs, x))
+            .fold(index => index == -1 ? none<number>() : some(index))
+
+    }
+
     find(p : (x : X) => boolean) : Optional<X> {
 
         return optional(find(this.xs, p))
@@ -77,16 +85,15 @@ export class List<X> {
 
     }
 
-    indexOf(x : X) : Optional<number> {
-
-        return box(indexOf(this.xs, x))
-            .fold(index => index == -1 ? none<number>() : some(index))
-
-    }
-
     flatten<Y>(f : (xs : X[]) => Y) : Y {
 
         return f(this.xs)
+
+    }
+
+    unique() : List<X> {
+
+        return list(uniq(this.xs))
 
     }
 
