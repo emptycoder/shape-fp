@@ -16,7 +16,6 @@ export declare class List<X> {
     find(p: (x: X) => boolean): Optional<X>;
     contains(x: X): boolean;
     flatten<Y>(f: (xs: X[]) => Y): Y;
-    unique(): List<X>;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
     box<Y>(f: (xs: X[]) => Y): Box<Y>;

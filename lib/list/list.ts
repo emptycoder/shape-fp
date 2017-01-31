@@ -7,10 +7,8 @@ import first = require('lodash.first')
 import last = require('lodash.last')
 import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
-import uniq = require('lodash.uniq')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
-import {None} from '../optional/none'
 import {none} from '../optional/none'
 import {some} from '../optional/some'
 
@@ -88,12 +86,6 @@ export class List<X> {
     flatten<Y>(f : (xs : X[]) => Y) : Y {
 
         return f(this.xs)
-
-    }
-
-    unique() : List<X> {
-
-        return list(uniq(this.xs))
 
     }
 

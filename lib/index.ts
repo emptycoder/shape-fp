@@ -38,8 +38,8 @@ export { TaskList }
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 export { conditionalIo, dontRun, run }
 
-import { randomNumber, nth, randomIndex, randomElement } from './array/array'
-export { randomNumber, nth, randomIndex, randomElement }
+import { nth, indexed, groupByFirst } from './tuples/tuples'
+export { nth, indexed, groupByFirst }
 
 import { entries, mapValues, fromPairs } from './object/object'
 export { entries, mapValues, fromPairs }
