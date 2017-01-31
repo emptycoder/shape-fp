@@ -1,13 +1,13 @@
-import {Dictionary} from './dictionary'
+import Dictionary from './dictionary'
 
 //  There is currently no way in TypeScript to specify an object that is “not a primitive”.
-export function entries <R>(obj : any) : [string, R][] {
+export function entries <V>(obj : any) : [string, V][] {
 
-    return Object.keys(obj).map(key => [key, obj[key]] as [string, R])
+    return Object.keys(obj).map(key => [key, obj[key]] as [string, V])
 
 }
 
-export function mapValues<T, TV, R, RV>(input : T, f : (value : TV) => RV) : R {
+export function mapValues<I, O>(input : Dictionary<I>, f : (value : I) => O) : Dictionary<O> {
 
     const newObject = {}
 
@@ -16,7 +16,7 @@ export function mapValues<T, TV, R, RV>(input : T, f : (value : TV) => RV) : R {
         newObject[key] = f(input[key])
     }
 
-    return newObject as R
+    return newObject as Dictionary<O>
 
 }
 
