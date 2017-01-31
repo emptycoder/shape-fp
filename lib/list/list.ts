@@ -28,6 +28,12 @@ export class List<X> {
 
     }
 
+    mapIndexed<Y>(f : (x : X, i : number) => Y) : List<Y> {
+
+        return new List(this.xs.map(f))
+
+    }
+
     chain<Y>(f : (x : X[]) => List<Y>) : List<Y> {
 
         return f(this.xs)

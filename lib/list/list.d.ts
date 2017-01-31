@@ -6,6 +6,7 @@ export declare class List<X> {
     private xs;
     constructor(xs: X[]);
     map<Y>(f: (x: X) => Y): List<Y>;
+    mapIndexed<Y>(f: (x: X, i: number) => Y): List<Y>;
     chain<Y>(f: (x: X[]) => List<Y>): List<Y>;
     fold<Y>(f: (x: X) => Y): Y[];
     get(): X[];
