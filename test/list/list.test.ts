@@ -55,7 +55,7 @@ describe('List', () => {
 
     })
 
-    it('should make it possible flatten the items', () => {
+    it('should be able to flatten the items', () => {
 
         let instance = list(['A', 'B'])
 
@@ -65,13 +65,12 @@ describe('List', () => {
 
     })
 
-    it('should return return a new list with unique items', () => {
+    it('should be able to check if a predicate is true for any member', () => {
 
-        let instance = list([1, 2, 2, 3, 3, 3])
+        let instance = list([1, 2, 3])
 
-        assert.deepEqual(
-            instance.unique().get(),
-            [ 1, 2, 3, ])
+        assert.isTrue(instance.any(x => x % 2 == 0))
+        assert.isFalse(instance.any(x => x >= 4 ))
 
     })
 

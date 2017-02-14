@@ -28,13 +28,14 @@ describe('List', function () {
         var f = function (x) { return x + 1; };
         chai_1.assert.deepEqual(instance.fold(f), instance.map(f).get());
     });
-    it('should make it possible flatten the items', function () {
+    it('should be able to flatten the items', function () {
         var instance = list_1.list(['A', 'B']);
         chai_1.assert.deepEqual(instance.flatten(function (item) { return item.join(' '); }), 'A B');
     });
-    it('should return return a new list with unique items', function () {
-        var instance = list_1.list([1, 2, 2, 3, 3, 3]);
-        chai_1.assert.deepEqual(instance.unique().get(), [1, 2, 3,]);
+    it('should be able to check if a predicate is true for any member', function () {
+        var instance = list_1.list([1, 2, 3]);
+        chai_1.assert.isTrue(instance.any(function (x) { return x % 2 == 0; }));
+        chai_1.assert.isFalse(instance.any(function (x) { return x >= 4; }));
     });
 });
 //# sourceMappingURL=list.test.js.map

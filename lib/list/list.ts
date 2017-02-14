@@ -89,6 +89,17 @@ export class List<X> {
 
     }
 
+    any(f : (x) => boolean) : boolean {
+
+        for (const x in this.xs) {
+            if(f(x)) {
+                return true
+            }
+        }
+
+        return false
+    }
+
     flatten<Y>(f : (xs : X[]) => Y) : Y {
 
         return f(this.xs)

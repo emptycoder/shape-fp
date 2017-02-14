@@ -16,6 +16,7 @@ export declare class List<X> {
     indexOf(x: X): Optional<number>;
     find(p: (x: X) => boolean): Optional<X>;
     contains(x: X): boolean;
+    any(f: (x) => boolean): boolean;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
