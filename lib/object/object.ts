@@ -7,13 +7,13 @@ export function entries <V>(obj : any) : [string, V][] {
 
 }
 
-export function mapValues<I, O>(input : Dictionary<I>, f : (value : I) => O) : Dictionary<O> {
+export function mapValues<I, O>(input : Dictionary<I>, f : (key : string, value : I) => O) : Dictionary<O> {
 
     const newObject = {}
 
     for(const key of Object.keys(input)) {
 
-        newObject[key] = f(input[key])
+        newObject[key] = f(key, input[key])
     }
 
     return newObject as Dictionary<O>
