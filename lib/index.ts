@@ -38,11 +38,8 @@ export { TaskList }
 import { conditionalIo, dontRun, run } from './conditional-io/conditional-io'
 export { conditionalIo, dontRun, run }
 
-import { nth, indexed, groupByFirst } from './tuples/tuples'
-export { nth, indexed, groupByFirst }
-
-import { entries, mapValues, fromPairs } from './object/object'
-export { entries, mapValues, fromPairs }
+import { entries, mapValues, fromPairs, groupPairsByFirst } from './object/object'
+export { entries, mapValues, fromPairs, groupPairsByFirst }
 
 import Dictionary from './object/dictionary'
 export { Dictionary }
