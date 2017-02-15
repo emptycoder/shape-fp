@@ -74,4 +74,15 @@ describe('List', () => {
 
     })
 
+    it('should be able to associate items', () => {
+
+        let instance = list([1, 2])
+
+        assert.deepEqual(
+            instance.associate(x => x * 2).get(),
+            [ [1, 2], [2, 4] ]
+        )
+
+    })
+
 })

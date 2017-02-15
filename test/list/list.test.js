@@ -37,5 +37,9 @@ describe('List', function () {
         chai_1.assert.isTrue(instance.any(function (x) { return x % 2 == 0; }));
         chai_1.assert.isFalse(instance.any(function (x) { return x >= 4; }));
     });
+    it('should be able to associate items', function () {
+        var instance = list_1.list([1, 2]);
+        chai_1.assert.deepEqual(instance.associate(function (x) { return x * 2; }).get(), [[1, 2], [2, 4]]);
+    });
 });
 //# sourceMappingURL=list.test.js.map

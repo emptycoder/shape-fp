@@ -11,6 +11,8 @@ import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {none} from '../optional/none'
 import {some} from '../optional/some'
+import Dictionary from '../object/dictionary'
+import {fromPairs} from '../object/object'
 
 export class List<X> {
 
@@ -98,6 +100,16 @@ export class List<X> {
         }
 
         return false
+    }
+
+    associate<Y>(f : (x) => Y) : List<[X, Y]> {
+
+        return this.map(x =>
+
+            [ x, f(x) ] as [X, Y]
+
+        )
+
     }
 
     flatten<Y>(f : (xs : X[]) => Y) : Y {
