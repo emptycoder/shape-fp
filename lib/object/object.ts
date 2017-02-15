@@ -38,7 +38,7 @@ export function fromPairs <T>(pairs : [string, T][]) : Dictionary<T> {
 
 }
 
-export function groupPairsByFirst<A, B>(array : [string, B][]) : Dictionary<B> {
+export function groupPairsByFirst<A, B>(array : [string, B][]) : Dictionary<B[]> {
 
     const obj = {}
 
