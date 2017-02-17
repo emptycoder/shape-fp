@@ -53,6 +53,12 @@ export class Some<X> implements Optional<X> {
 
     }
 
+    run(f : (x : X) => void) {
+
+        f(this.x)
+
+    }
+
     box<Y>(onNone: () => Y, onSome: (x : X) => Y) : Box<Y> {
 
         return box(onSome(this.x))

@@ -9,7 +9,7 @@ describe('entries', function () {
 });
 describe('mapValues', function () {
     it('should map an object from one type to another type by mapping its values', function () {
-        chai_1.assert.deepEqual(object_2.mapValues({ member: 1 }, function (number) { return number.toString(); }), { member: '1' });
+        chai_1.assert.deepEqual(object_2.mapValues({ member: 1 }, function (key, number) { return number.toString(); }), { member: '1' });
     });
 });
 describe('fromPairs', function () {

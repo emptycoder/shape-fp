@@ -16,6 +16,8 @@ interface Optional<X> {
 
     isEmpty() : boolean
 
+    run(f : (x : X) => void)
+
     box<Y>(onNone: () => Y, onSome : (x : X) => Y) : Box<Y>
 
 }

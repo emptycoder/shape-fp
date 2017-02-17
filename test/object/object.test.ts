@@ -17,21 +17,10 @@ describe('entries', () => {
 
 describe('mapValues', () => {
 
-    interface NumberObject {
-
-        member : number
-    }
-
-
-    interface StringObject {
-
-        member : string
-    }
-
     it('should map an object from one type to another type by mapping its values', () => {
 
         assert.deepEqual(
-            mapValues<number, string>({ member: 1 }, number => number.toString()),
+            mapValues<number, string>({ member: 1 }, (key, number) => number.toString()),
             { member: '1' }
         )
 

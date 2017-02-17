@@ -9,6 +9,7 @@ export declare class None<X> implements Optional<X> {
     get(): X | null;
     isDefined(): boolean;
     isEmpty(): boolean;
+    run(f: (x: X) => void): void;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
 export declare const none: <X>() => None<X>;

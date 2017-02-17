@@ -50,6 +50,10 @@ export class None<X> implements Optional<X> {
 
     }
 
+    run(f : (x : X) => void) {
+
+    }
+
     box<Y>(onNone: () => Y, onSome: (x : X) => Y) : Box<Y> {
 
         return box(onNone())
