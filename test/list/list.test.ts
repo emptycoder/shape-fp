@@ -85,4 +85,15 @@ describe('List', () => {
 
     })
 
+    it('should be able to groups items', () => {
+
+        let instance = list([1, 1, 2])
+
+        assert.deepEqual(
+            instance.groupBy(x => x.toString()),
+            { '1': [ 1, 1 ], '2': [ 2 ] }
+        )
+
+    })
+
 })

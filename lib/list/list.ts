@@ -7,10 +7,12 @@ import first = require('lodash.first')
 import last = require('lodash.last')
 import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
+import groupBy = require('lodash.groupby')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {none} from '../optional/none'
 import {some} from '../optional/some'
+import {StringKeyObject} from '../objects/objects'
 
 export class List<X> {
 
@@ -85,23 +87,34 @@ export class List<X> {
 
     }
 
-    any(f : (x) => boolean) : boolean {
+    any(f : (x : X) => boolean) : boolean {
 
-        for (const x in this.xs) {
+        for (const x of this.xs) {
+
             if(f(x)) {
                 return true
             }
+
         }
 
         return false
     }
 
-    associate<Y>(f : (x) => Y) : List<[X, Y]> {
+    associate<Y>(f : (x : X) => Y) : List<[X, Y]> {
 
         return this.map(x =>
 
             [ x, f(x) ] as [X, Y]
 
+        )
+
+    }
+
+    groupBy(key : (x : X) => string) : StringKeyObject<X[]> {
+
+        return groupBy(
+            this.xs,
+            key
         )
 
     }
