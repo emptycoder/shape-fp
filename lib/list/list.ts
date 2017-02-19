@@ -12,7 +12,7 @@ import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {none} from '../optional/none'
 import {some} from '../optional/some'
-import {StringKeyObject} from '../objects/objects'
+import {dictionary, Dictionary} from '../dictionary/dictionary'
 
 export class List<X> {
 
@@ -110,12 +110,12 @@ export class List<X> {
 
     }
 
-    groupBy(key : (x : X) => string) : StringKeyObject<X[]> {
+    groupBy(key : (x : X) => string) : Dictionary<X[]> {
 
-        return groupBy(
+        return dictionary(groupBy(
             this.xs,
             key
-        )
+        ))
 
     }
 

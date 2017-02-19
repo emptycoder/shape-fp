@@ -90,7 +90,7 @@ describe('List', () => {
         let instance = list([1, 1, 2])
 
         assert.deepEqual(
-            instance.groupBy(x => x.toString()),
+            instance.groupBy(x => x.toString()).get(),
             { '1': [ 1, 1 ], '2': [ 2 ] }
         )
 

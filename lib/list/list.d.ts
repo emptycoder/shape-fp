@@ -2,7 +2,7 @@ import { Task } from '../task/task';
 import { TaskList } from '../task/task_list';
 import { Box } from '../box/box';
 import Optional from '../optional/optional';
-import { StringKeyObject } from '../objects/objects';
+import { Dictionary } from '../dictionary/dictionary';
 export declare class List<X> {
     private xs;
     constructor(xs: X[]);
@@ -19,7 +19,7 @@ export declare class List<X> {
     contains(x: X): boolean;
     any(f: (x: X) => boolean): boolean;
     associate<Y>(f: (x: X) => Y): List<[X, Y]>;
-    groupBy(key: (x: X) => string): StringKeyObject<X[]>;
+    groupBy(key: (x: X) => string): Dictionary<X[]>;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;

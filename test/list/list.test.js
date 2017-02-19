@@ -43,7 +43,7 @@ describe('List', function () {
     });
     it('should be able to groups items', function () {
         var instance = list_1.list([1, 1, 2]);
-        chai_1.assert.deepEqual(instance.groupBy(function (x) { return x.toString(); }), { '1': [1, 1], '2': [2] });
+        chai_1.assert.deepEqual(instance.groupBy(function (x) { return x.toString(); }).get(), { '1': [1, 1], '2': [2] });
     });
 });
 //# sourceMappingURL=list.test.js.map
