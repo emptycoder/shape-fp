@@ -1,6 +1,9 @@
 import {StringKeyObject, toObject} from '../objects/objects'
 import {StringValuePair} from '../objects/pair'
 import {list} from '../list/list'
+import pick = require ('lodash.pick')
+import values = require ('lodash.values')
+import toPairs = require ('lodash.topairs')
 
 export class Dictionary<V> {
 
@@ -10,7 +13,7 @@ export class Dictionary<V> {
 
     entries() : StringValuePair<V>[] {
 
-        return Object.entries(this.obj)
+        return toPairs(this.obj) as StringValuePair<V>[]
 
     }
 
@@ -22,7 +25,7 @@ export class Dictionary<V> {
 
     values() : V[] {
 
-        return Object.values(this.obj)
+        return values(this.obj)
 
     }
 
@@ -41,6 +44,12 @@ export class Dictionary<V> {
 
                 new Dictionary(obj)
             )
+
+    }
+
+    pick(...keys : string[]) : Dictionary<V> {
+
+        return dictionary(pick(this.obj, keys) as StringKeyObject<V>)
 
     }
 

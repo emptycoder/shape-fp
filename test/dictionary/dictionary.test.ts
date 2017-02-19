@@ -1,14 +1,13 @@
 import { assert } from 'chai'
 import {dictionary} from '../../lib/dictionary/dictionary'
-import {StringValuePair} from '../../lib/objects/pair'
 
 describe('Dictionary', () => {
 
     it('should be able to return its keys as an array', () => {
 
         assert.deepEqual(
-            dictionary([[ 'key',  1 ]]).keys(),
-            [ 'key' ]
+            dictionary({ 'a': 1 }).keys(),
+            [ 'a' ]
         )
 
     })
@@ -16,7 +15,7 @@ describe('Dictionary', () => {
     it('should be able to return its values as an array', () => {
 
         assert.deepEqual(
-            dictionary([[ 'key',  1 ]]).values(),
+            dictionary({ 'a': 1 }).values(),
             [ 1 ]
         )
 
@@ -24,11 +23,9 @@ describe('Dictionary', () => {
 
     it('should be able to return the entries it contains', () => {
 
-        const entries = [[ 'key',  1 ]] as StringValuePair<number>[]
-
         assert.deepEqual(
-            dictionary(entries).entries(),
-            entries
+            dictionary({ 'a': 1 }).entries(),
+            [ [ 'a', 1 ] ]
         )
 
     })
@@ -36,25 +33,10 @@ describe('Dictionary', () => {
     it('should be able to map over its values', () => {
 
         assert.deepEqual(
-            dictionary([[ 'key',  1 ]]).map((k, v) => v + 1).entries(),
-            [['key', 2]]
+            dictionary({ 'a': 1 }).map((k, v) => v + 1).get(),
+            { 'a': 2 }
         )
 
     })
-
-
-})
-
-describe('dictionary', () => {
-
-    it('should be overloaded correctly', () => {
-
-        assert.deepEqual(
-            dictionary([[ 'key',  1 ]]).entries(),
-            dictionary({ 'key':  1 }).entries()
-        )
-
-    })
-
 
 })

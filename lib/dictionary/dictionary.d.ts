@@ -7,6 +7,7 @@ export declare class Dictionary<V> {
     keys(): string[];
     values(): V[];
     map<W>(f: (key: string, value: V) => W): Dictionary<W>;
+    pick(...keys: string[]): Dictionary<V>;
     get(): StringKeyObject<V>;
 }
 export declare function dictionary<V>(obj: StringKeyObject<V>): Dictionary<V>;
