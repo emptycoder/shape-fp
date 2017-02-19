@@ -41,7 +41,7 @@ export class Box<X> {
 
     }
 
-    attempt<F, S>(f: (x : X) => Result<F, S>) {
+    attempt<F, S>(f: (x : X) => Result<F, S>) : Result<F, S> {
 
         return f(this.x)
 

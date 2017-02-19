@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Functional programming for Typescript",
   "keywords": ["functional", "functional-programming", "fp", "functor", "monad", "lazy", "option", "optional", "result", "success", "failure", "task", "dictionary" ],
   "homepage": "https://github.com/sekwiatkowski/shape-fp",
