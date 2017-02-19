@@ -39,4 +39,14 @@ describe('Dictionary', () => {
 
     })
 
+    it('should be foldable', () => {
+
+        assert.deepEqual(
+            dictionary({ 'a': 1 }).fold((k, v) => v + 1),
+            { 'a': 2 }
+        )
+
+    })
+
+
 })

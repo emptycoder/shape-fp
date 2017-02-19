@@ -7,6 +7,7 @@ export declare class Dictionary<V> {
     keys(): string[];
     values(): V[];
     map<W>(f: (key: string, value: V) => W): Dictionary<W>;
+    fold<W>(f: (key: string, value: V) => W): StringKeyObject<W>;
     pick(...keys: string[]): Dictionary<V>;
     get(): StringKeyObject<V>;
 }

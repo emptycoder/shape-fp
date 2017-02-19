@@ -14,5 +14,8 @@ describe('Dictionary', function () {
     it('should be able to map over its values', function () {
         chai_1.assert.deepEqual(dictionary_1.dictionary({ 'a': 1 }).map(function (k, v) { return v + 1; }).get(), { 'a': 2 });
     });
+    it('should be foldable', function () {
+        chai_1.assert.deepEqual(dictionary_1.dictionary({ 'a': 1 }).fold(function (k, v) { return v + 1; }), { 'a': 2 });
+    });
 });
 //# sourceMappingURL=dictionary.test.js.map

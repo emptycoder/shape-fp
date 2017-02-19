@@ -47,6 +47,20 @@ export class Dictionary<V> {
 
     }
 
+    fold<W>(f : (key : string, value : V) => W) : StringKeyObject<W> {
+
+        return list(this.entries())
+            .map(pair => {
+
+                const [key, value] = pair
+
+                return [ key, f(key, value) ] as StringValuePair<W>
+
+            })
+            .flatten(toObject)
+
+    }
+
     pick(...keys : string[]) : Dictionary<V> {
 
         return dictionary(pick(this.obj, keys) as StringKeyObject<V>)
