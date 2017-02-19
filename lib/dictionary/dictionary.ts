@@ -4,6 +4,7 @@ import {Entry} from './object'
 export class Dictionary<V> {
 
     constructor(private pairs: Entry<V>[]) {
+
     }
 
     entries() : Entry<V>[] {

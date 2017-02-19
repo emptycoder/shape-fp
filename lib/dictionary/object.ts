@@ -17,6 +17,22 @@ export function entries<V>(obj : StringKeyObject<V>) : Entry<V>[] {
     )
 }
 
+export function toObject<V>(entries : Entry<V>[]) : StringKeyObject<V> {
+
+    const obj = {}
+
+    entries.forEach(entry => {
+
+        const [key, value] = entry
+
+        obj[key] = value
+
+    })
+
+    return obj
+
+}
+
 export function groupPairsByFirst<A, B>(array : [string, B][]) : StringKeyObject<B[]> {
 
     const obj = {}

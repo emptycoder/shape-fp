@@ -16,7 +16,6 @@ import { Result } from './result/result'
 import { tryCatch } from './result/helper'
 import { Success, success } from './result/success'
 import { Failure, failure } from './result/failure'
-
 export { Result }
 export { tryCatch }
 export { Success, success }
@@ -35,8 +34,10 @@ export { createTaskWaterfall }
 import { TaskList } from './task/task_list'
 export { TaskList }
 
-import { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst } from './dictionary/dictionary'
-export { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst }
+import { dictionary, Dictionary } from './dictionary/dictionary'
+import { entries, toObject, groupPairsByFirst } from './dictionary/object'
+export { dictionary, Dictionary }
+export { entries, toObject, groupPairsByFirst }
 
 import identity from './functions/identity'
 export { identity }

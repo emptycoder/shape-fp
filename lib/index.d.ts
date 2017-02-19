@@ -27,8 +27,10 @@ export { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, re
 export { createTaskWaterfall };
 import { TaskList } from './task/task_list';
 export { TaskList };
-import { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst } from './dictionary/dictionary';
-export { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst };
+import { dictionary, Dictionary } from './dictionary/dictionary';
+import { entries, toObject, groupPairsByFirst } from './dictionary/object';
+export { dictionary, Dictionary };
+export { entries, toObject, groupPairsByFirst };
 import identity from './functions/identity';
 export { identity };
 import forward from './functions/forward';
