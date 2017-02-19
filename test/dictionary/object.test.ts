@@ -1,5 +1,6 @@
 import { assert } from 'chai'
-import {entries, groupPairsByFirst} from '../../lib/dictionary/object'
+import {entries} from '../../lib/object/object'
+import {groupNumberValuePairs, groupStringValuePairs} from '../../lib/object/grouping'
 
 describe('entries', () => {
 
@@ -14,15 +15,30 @@ describe('entries', () => {
 
 })
 
-describe('groupPairsByFirst', () => {
+describe('groupStringValuePairs', () => {
+
+    it('should map an array of pairs to an object', () => {
+
+        const actual = groupStringValuePairs([['A', 1], ['B', 2], ['B', 3]])
+
+        assert.deepEqual(
+            actual,
+            { A: [ 1 ], B: [ 2, 3, ] }
+        )
+
+    })
+
+})
+
+describe('groupNumberValuePairs', () => {
 
     it('should map an array of pairs to a dictionary', () => {
 
-        let dictionary = groupPairsByFirst([['A', 1], ['B', 2], ['B', 3]])
+        let dictionary = groupNumberValuePairs([[1, 'A'], [2, 'B'], [1, 'C']])
 
         assert.deepEqual(
             dictionary,
-            { A: [ 1 ], B: [ 2, 3, ] }
+            { 1: ['A', 'C'], 2 : ['B'] }
         )
 
     })

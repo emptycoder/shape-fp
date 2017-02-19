@@ -35,9 +35,14 @@ import { TaskList } from './task/task_list'
 export { TaskList }
 
 import { dictionary, Dictionary } from './dictionary/dictionary'
-import { entries, toObject, groupPairsByFirst } from './dictionary/object'
 export { dictionary, Dictionary }
-export { entries, toObject, groupPairsByFirst }
+
+import { NumberKeyObject, StringKeyObject, entries, toObject } from './object/object'
+import { groupStringValuePairs, groupNumberValuePairs } from './object/grouping'
+import { StringValuePair, NumberValuePair } from './object/pair'
+export { NumberKeyObject, StringKeyObject, entries, toObject }
+export { groupStringValuePairs, groupNumberValuePairs }
+export { StringValuePair, NumberValuePair }
 
 import identity from './functions/identity'
 export { identity }

@@ -1,6 +1,6 @@
 import { assert } from 'chai'
 import {dictionary} from '../../lib/dictionary/dictionary'
-import {Entry} from '../../lib/dictionary/object'
+import {StringValuePair} from '../../lib/object/pair'
 
 describe('Dictionary', () => {
 
@@ -24,7 +24,7 @@ describe('Dictionary', () => {
 
     it('should be able to return the entries it contains', () => {
 
-        const entries = [[ 'key',  1 ]] as Entry<number>[]
+        const entries = [[ 'key',  1 ]] as StringValuePair<number>[]
 
         assert.deepEqual(
             dictionary(entries).entries(),

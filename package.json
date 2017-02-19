@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Functional programming for Typescript",
   "keywords": [
     "functional",

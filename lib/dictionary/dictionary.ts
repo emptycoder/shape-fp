@@ -1,13 +1,13 @@
-import {entries, StringKeyObject} from './object'
-import {Entry} from './object'
+import {entries, StringKeyObject} from '../object/object'
+import {StringValuePair} from '../object/pair'
 
 export class Dictionary<V> {
 
-    constructor(private pairs: Entry<V>[]) {
+    constructor(private pairs: StringValuePair<V>[]) {
 
     }
 
-    entries() : Entry<V>[] {
+    entries() : StringValuePair<V>[] {
 
         return this.pairs
     }
@@ -50,9 +50,9 @@ export class Dictionary<V> {
 
 }
 
-export function dictionary<V>(pairs: [string, V][]) : Dictionary<V>
+export function dictionary<V>(pairs: StringValuePair<V>[]) : Dictionary<V>
 export function dictionary<V>(object: StringKeyObject<V>) : Dictionary<V>
-export function dictionary<V>(input: [string, V][] | StringKeyObject<V>) : Dictionary<V> {
+export function dictionary<V>(input: StringValuePair<V>[] | StringKeyObject<V>) : Dictionary<V> {
 
     if (Array.isArray(input)) {
 
@@ -62,6 +62,7 @@ export function dictionary<V>(input: [string, V][] | StringKeyObject<V>) : Dicti
     else {
 
         return new Dictionary(entries(input))
+
     }
 
 }
