@@ -11,6 +11,7 @@ export class Dictionary<V> {
     entries() : StringValuePair<V>[] {
 
         return Object.entries(this.obj)
+
     }
 
     keys() : string[] {
@@ -40,6 +41,12 @@ export class Dictionary<V> {
 
                 new Dictionary(obj)
             )
+
+    }
+
+    get() : StringKeyObject<V> {
+
+        return this.obj
 
     }
 
