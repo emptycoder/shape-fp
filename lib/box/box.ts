@@ -17,6 +17,12 @@ export class Box<X> {
 
     }
 
+    chain<Y>(f: (x : X) => Box<Y>) : Box<Y> {
+
+        return f(this.x)
+
+    }
+
     fold<Y>(f : (x : X) => Y) : Y {
 
         return f(this.x)

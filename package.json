@@ -1,7 +1,9 @@
 {
   "name": "shape-fp",
-  "version": "0.9.0",
-  "description": "Functional programming",
+  "version": "0.9.1",
+  "description": "Functional programming for Typescript",
+  "keywords": ["functional", "functional-programming", "fp", "functor", "monad", "lazy", "option", "optional", "result", "success", "failure", "task", "object", "map", "dictionary" ],
+  "homepage": "https://github.com/sekwiatkowski/shape-fp",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -12,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/sekwiatkowski/shape-fp.git"
+    "url": "git://github.com/sekwiatkowski/shape-fp.git"
   },
   "author": "Sebastian E. Kwiatkowski",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/core-js": "^0.9.35",

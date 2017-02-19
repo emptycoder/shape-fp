@@ -26,7 +26,7 @@ export class Lazy<X> {
 
     get () : X {
 
-        return this.fold(identity)
+        return this.g()
     }
 
     run(f : (x : X) => void) {

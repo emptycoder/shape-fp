@@ -4,6 +4,7 @@ export declare class Box<X> {
     private x;
     constructor(x: X);
     map<Y>(f: (x: X) => Y): Box<Y>;
+    chain<Y>(f: (x: X) => Box<Y>): Box<Y>;
     fold<Y>(f: (x: X) => Y): Y;
     get(): X;
     run(f: (x: X) => void): void;
