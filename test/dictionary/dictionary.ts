@@ -1,6 +1,5 @@
 import { assert } from 'chai';
-import {entries, fromPairs, groupPairsByFirst} from '../../lib/object/object'
-import {mapValues} from '../../lib/object/object'
+import {entries, fromPairs, groupPairsByFirst, mapValues} from '../../lib/dictionary/dictionary'
 
 describe('entries', () => {
 

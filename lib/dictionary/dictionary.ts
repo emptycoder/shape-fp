@@ -1,5 +1,10 @@
-import Dictionary from './dictionary'
 import tail = require('lodash.tail')
+
+export interface Dictionary<T> {
+
+    [index: string]: T
+
+}
 
 //  There is currently no way in TypeScript to specify an object that is “not a primitive”.
 export function entries <V>(obj : any) : [string, V][] {

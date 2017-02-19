@@ -27,14 +27,8 @@ export { Task, task, taskFromPromise, taskFromAsynchronousFunction, rejected, re
 export { createTaskWaterfall };
 import { TaskList } from './task/task_list';
 export { TaskList };
-import { conditionalIo, dontRun, run } from './conditional-io/conditional-io';
-export { conditionalIo, dontRun, run };
-import { entries, mapValues, fromPairs, groupPairsByFirst } from './object/object';
-export { entries, mapValues, fromPairs, groupPairsByFirst };
-import Dictionary from './object/dictionary';
-export { Dictionary };
-import Constructor from './object/constructor';
-export { Constructor };
+import { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst } from './dictionary/dictionary';
+export { Dictionary, entries, mapValues, fromPairs, groupPairsByFirst };
 import identity from './functions/identity';
 export { identity };
 import forward from './functions/forward';
