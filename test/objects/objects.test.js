@@ -19,4 +19,4 @@ describe('groupNumberValuePairs', function () {
         chai_1.assert.deepEqual(dictionary, { 1: ['A', 'C'], 2: ['B'] });
     });
 });
-//# sourceMappingURL=object.test.js.map
+//# sourceMappingURL=objects.test.js.map

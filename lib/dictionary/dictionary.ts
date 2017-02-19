@@ -1,68 +1,52 @@
-import {entries, StringKeyObject} from '../objects/objects'
+import {StringKeyObject, toObject} from '../objects/objects'
 import {StringValuePair} from '../objects/pair'
+import {list} from '../list/list'
 
 export class Dictionary<V> {
 
-    constructor(private pairs: StringValuePair<V>[]) {
+    constructor(private obj: StringKeyObject<V>) {
 
     }
 
     entries() : StringValuePair<V>[] {
 
-        return this.pairs
+        return Object.entries(this.obj)
     }
 
     keys() : string[] {
 
-        return this.pairs.map(pair => {
-
-            const [key, _] = pair
-
-            return key
-
-        })
+        return Object.keys(this.obj)
 
     }
 
     values() : V[] {
 
-        return this.pairs.map(pair => {
-
-            const [_, value] = pair
-
-            return value
-
-        })
+        return Object.values(this.obj)
 
     }
 
     map<W>(f : (key : string, value : V) => W) : Dictionary<W> {
 
-        return new Dictionary<W>(this.pairs.map(pair => {
+        return list(this.entries())
+            .map(pair => {
 
-            const [key, value] = pair
+                const [key, value] = pair
 
-            return [key, f(key, value)] as [string, W]
+                return [ key, f(key, value) ] as StringValuePair<W>
 
-        }))
+            })
+            .box(toObject)
+            .fold(obj =>
+
+                new Dictionary(obj)
+            )
 
     }
 
 }
 
-export function dictionary<V>(pairs: StringValuePair<V>[]) : Dictionary<V>
-export function dictionary<V>(object: StringKeyObject<V>) : Dictionary<V>
-export function dictionary<V>(input: StringValuePair<V>[] | StringKeyObject<V>) : Dictionary<V> {
+export function dictionary<V>(obj: StringKeyObject<V>) : Dictionary<V> {
 
-    if (Array.isArray(input)) {
-
-        return new Dictionary(input)
-
-    }
-    else {
-
-        return new Dictionary(entries(input))
-
-    }
+    return new Dictionary(obj)
 
 }
