@@ -1,10 +1,10 @@
 "use strict";
 var chai_1 = require("chai");
-var object_1 = require("../../lib/object/object");
-var grouping_1 = require("../../lib/object/grouping");
+var objects_1 = require("../../lib/objects/objects");
+var grouping_1 = require("../../lib/objects/grouping");
 describe('entries', function () {
     it('should return an array of key/value tuples', function () {
-        chai_1.assert.deepEqual(object_1.entries({ id: '1' }), [['id', '1']]);
+        chai_1.assert.deepEqual(objects_1.entries({ id: '1' }), [['id', '1']]);
     });
 });
 describe('groupStringValuePairs', function () {

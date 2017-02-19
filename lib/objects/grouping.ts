@@ -1,5 +1,5 @@
 import tail = require('lodash.tail')
-import {NumberKeyObject, StringKeyObject} from './object'
+import {NumberKeyObject, StringKeyObject} from './objects'
 import {NumberValuePair, StringValuePair} from './pair'
 
 function groupPairs<V>(array : (StringValuePair<V>|NumberValuePair<V>)[]) : {} {

@@ -1,5 +1,5 @@
-import {entries, StringKeyObject} from '../object/object'
-import {StringValuePair} from '../object/pair'
+import {entries, StringKeyObject} from '../objects/objects'
+import {StringValuePair} from '../objects/pair'
 
 export class Dictionary<V> {
 

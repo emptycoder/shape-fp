@@ -1,6 +1,6 @@
 import { assert } from 'chai'
-import {entries} from '../../lib/object/object'
-import {groupNumberValuePairs, groupStringValuePairs} from '../../lib/object/grouping'
+import {entries} from '../../lib/objects/objects'
+import {groupNumberValuePairs, groupStringValuePairs} from '../../lib/objects/grouping'
 
 describe('entries', () => {
 

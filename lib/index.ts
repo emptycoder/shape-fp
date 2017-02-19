@@ -37,9 +37,9 @@ export { TaskList }
 import { dictionary, Dictionary } from './dictionary/dictionary'
 export { dictionary, Dictionary }
 
-import { NumberKeyObject, StringKeyObject, entries, toObject } from './object/object'
-import { groupStringValuePairs, groupNumberValuePairs } from './object/grouping'
-import { StringValuePair, NumberValuePair } from './object/pair'
+import { NumberKeyObject, StringKeyObject, entries, toObject } from './objects/objects'
+import { groupStringValuePairs, groupNumberValuePairs } from './objects/grouping'
+import { StringValuePair, NumberValuePair } from './objects/pair'
 export { NumberKeyObject, StringKeyObject, entries, toObject }
 export { groupStringValuePairs, groupNumberValuePairs }
 export { StringValuePair, NumberValuePair }

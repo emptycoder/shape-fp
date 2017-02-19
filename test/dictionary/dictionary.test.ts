@@ -1,6 +1,6 @@
 import { assert } from 'chai'
 import {dictionary} from '../../lib/dictionary/dictionary'
-import {StringValuePair} from '../../lib/object/pair'
+import {StringValuePair} from '../../lib/objects/pair'
 
 describe('Dictionary', () => {
 
