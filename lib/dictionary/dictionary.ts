@@ -1,68 +1,66 @@
-import tail = require('lodash.tail')
+import {entries, StringKeyObject} from './object'
+import {Entry} from './object'
 
-export interface Dictionary<T> {
+export class Dictionary<V> {
 
-    [index: string]: T
-
-}
-
-//  There is currently no way in TypeScript to specify an object that is “not a primitive”.
-export function entries <V>(obj : any) : [string, V][] {
-
-    return Object.keys(obj).map(key => [key, obj[key]] as [string, V])
-
-}
-
-export function mapValues<I, O>(input : Dictionary<I>, f : (key : string, value : I) => O) : Dictionary<O> {
-
-    const newObject = {}
-
-    for(const key of Object.keys(input)) {
-
-        newObject[key] = f(key, input[key])
+    constructor(private pairs: Entry<V>[]) {
     }
 
-    return newObject as Dictionary<O>
+    entries() : Entry<V>[] {
 
-}
+        return this.pairs
+    }
 
-export function fromPairs <T>(pairs : [string, T][]) : Dictionary<T> {
+    keys() : string[] {
 
-    const obj : Dictionary<T> = {}
+        return this.pairs.map(pair => {
 
-    pairs
-        .forEach(pair => {
+            const [key, _] = pair
 
-            const [key, value] = pair
-
-            obj[key] = value
+            return key
 
         })
 
-    return obj
+    }
 
-}
+    values() : V[] {
 
-export function groupPairsByFirst<A, B>(array : [string, B][]) : Dictionary<B[]> {
+        return this.pairs.map(pair => {
 
-    const obj = {}
+            const [_, value] = pair
 
-    for(const tuple of array) {
+            return value
 
-        const key = tuple[0].toString()
-
-        if(!obj.hasOwnProperty(key)) {
-            obj[key] = []
-        }
-
-        tail(tuple).forEach(item =>
-
-            obj[key].push(item)
-
-        )
+        })
 
     }
 
-    return obj
+    map<W>(f : (key : string, value : V) => W) : Dictionary<W> {
+
+        return new Dictionary<W>(this.pairs.map(pair => {
+
+            const [key, value] = pair
+
+            return [key, f(key, value)] as [string, W]
+
+        }))
+
+    }
+
+}
+
+export function dictionary<V>(pairs: [string, V][]) : Dictionary<V>
+export function dictionary<V>(object: StringKeyObject<V>) : Dictionary<V>
+export function dictionary<V>(input: [string, V][] | StringKeyObject<V>) : Dictionary<V> {
+
+    if (Array.isArray(input)) {
+
+        return new Dictionary(input)
+
+    }
+    else {
+
+        return new Dictionary(entries(input))
+    }
 
 }

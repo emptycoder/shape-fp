@@ -3,11 +3,7 @@ import {List, list} from '../list/list'
 
 export class Box<X> {
 
-    private x : X
-
-    constructor(x : X) {
-
-        this.x = x
+    constructor(private x : X) {
 
     }
 

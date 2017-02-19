@@ -3,11 +3,7 @@ import parallel = require('run-parallel')
 
 export class Task<F, S> {
 
-    private _fork: Fork<F, S>
-
-    constructor(fork : Fork<F, S>) {
-
-        this._fork = fork
+    constructor(private _fork : Fork<F, S>) {
 
     }
 

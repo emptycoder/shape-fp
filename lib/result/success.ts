@@ -1,16 +1,10 @@
 import {Result} from "./result"
-import {Failure} from "./failure"
 import {Task} from "../task/task"
-import {rejected} from "../task/task"
 import {resolved} from "../task/task"
 
 export class Success<F, S> implements Result<F, S> {
 
-    private success : S
-
-    constructor(x : S) {
-
-        this.success = x
+    constructor(private success : S) {
 
     }
 

@@ -14,11 +14,7 @@ import {some} from '../optional/some'
 
 export class List<X> {
 
-    private xs : X[]
-
-    constructor(xs : X[]) {
-
-        this.xs = xs
+    constructor(private xs : X[]) {
 
     }
 

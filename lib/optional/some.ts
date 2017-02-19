@@ -3,11 +3,7 @@ import {Box, box} from '../box/box'
 
 export class Some<X> implements Optional<X> {
 
-    private x : X
-
-    constructor(x : X) {
-
-        this.x = x
+    constructor(private x : X) {
 
     }
 

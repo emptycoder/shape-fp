@@ -2,7 +2,7 @@ import { Result } from "./result";
 import { Task } from "../task/task";
 export declare class Success<F, S> implements Result<F, S> {
     private success;
-    constructor(x: S);
+    constructor(success: S);
     map<T>(f: (s: S) => T): Result<F, T>;
     chain<T>(f: (s: S) => Result<F, T>): Result<F, T>;
     fold<G, T>(onFailure: (f: F) => G, onSuccess: (s: S) => T): T;

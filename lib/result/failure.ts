@@ -4,11 +4,7 @@ import {rejected} from "../task/task"
 
 export class Failure<F, S> implements Result<F, S> {
 
-    private failure : F
-
-    constructor(x : F) {
-
-        this.failure = x
+    constructor(private failure : F) {
 
     }
 

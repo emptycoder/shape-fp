@@ -1,6 +1,10 @@
 # Box
 
-`Box` acts as container or around a value.
+`Box` acts as container around a value and can be instantiated with the `box` helper function.
+ 
+ ```typescript
+box(x)
+```
 
 ## map
 

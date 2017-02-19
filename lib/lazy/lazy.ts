@@ -1,12 +1,6 @@
-import identity from '../functions/identity'
-
 export class Lazy<X> {
 
-    private g : () => X
-
-    constructor(g : () => X) {
-
-        this.g = g
+    constructor(private g : () => X) {
 
     }
 

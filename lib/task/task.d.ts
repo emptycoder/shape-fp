@@ -2,7 +2,7 @@
 import { Fork, Reject, Resolve } from './fork';
 export declare class Task<F, S> {
     private _fork;
-    constructor(fork: Fork<F, S>);
+    constructor(_fork: Fork<F, S>);
     map<T>(f: (s: S) => T): Task<F, T>;
     chain<T>(f: (s: S) => Task<F, T>): Task<F, T>;
     orElse<G>(f: (f: F) => Task<G, S>): Task<G, S>;

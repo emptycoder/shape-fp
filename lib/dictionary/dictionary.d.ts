@@ -1,7 +1,12 @@
-export interface Dictionary<T> {
-    [index: string]: T;
+import { StringKeyObject } from './object';
+import { Entry } from './object';
+export declare class Dictionary<V> {
+    private pairs;
+    constructor(pairs: Entry<V>[]);
+    entries(): Entry<V>[];
+    keys(): string[];
+    values(): V[];
+    map<W>(f: (key: string, value: V) => W): Dictionary<W>;
 }
-export declare function entries<V>(obj: any): [string, V][];
-export declare function mapValues<I, O>(input: Dictionary<I>, f: (key: string, value: I) => O): Dictionary<O>;
-export declare function fromPairs<T>(pairs: [string, T][]): Dictionary<T>;
-export declare function groupPairsByFirst<A, B>(array: [string, B][]): Dictionary<B[]>;
+export declare function dictionary<V>(pairs: [string, V][]): Dictionary<V>;
+export declare function dictionary<V>(object: StringKeyObject<V>): Dictionary<V>;
