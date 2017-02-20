@@ -39,6 +39,15 @@ describe('Dictionary', () => {
 
     })
 
+    it('should be chainable', () => {
+
+        assert.deepEqual(
+            dictionary({ 'outerKey': 'outerValue' }).chain((k, v) => dictionary({ innerKey1: 'innerValue1', innerKey2: 'innerValue2' })).get(),
+            { innerKey1: 'innerValue1', innerKey2: 'innerValue2' }
+        )
+
+    })
+
     it('should be foldable', () => {
 
         assert.deepEqual(

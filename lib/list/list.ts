@@ -49,6 +49,12 @@ export class List<X> {
 
     }
 
+    forEach(f : (item : X) => void) {
+
+        this.xs.forEach(f)
+
+    }
+
     run(f : (array : X[]) => void) {
 
         f(this.xs)

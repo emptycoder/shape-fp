@@ -47,6 +47,25 @@ export class Dictionary<V> {
 
     }
 
+    chain<W>(f : (key : string, value : V) => Dictionary<W>) : Dictionary<W> {
+
+        const obj = {} as StringKeyObject<W>
+
+        this.map(f) // Dictionary<Dictionary<W>>
+            .forEach((outerKey, dict) => {
+
+                dict.forEach((key, value) => {
+
+                    obj[key] = value
+
+                })
+
+            })
+
+        return new Dictionary(obj)
+
+    }
+
     fold<W>(f : (key : string, value : V) => W) : StringKeyObject<W> {
 
         return list(this.entries())
@@ -58,6 +77,24 @@ export class Dictionary<V> {
 
             })
             .flatten(toObject)
+
+    }
+
+    run(f : (obj : StringKeyObject<V>) => void) {
+
+        f(this.obj)
+
+    }
+
+    forEach(f : (key : string, value : V) => void) {
+
+        this.entries().forEach(entry => {
+
+            const [ key, value ] = entry
+
+            f(key, value)
+
+        })
 
     }
 

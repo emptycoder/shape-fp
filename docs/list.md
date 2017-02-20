@@ -1,5 +1,13 @@
 # List
 
+The List<T> monad is a wrapper around an array of items of type T.
+ 
+The easiest way to create an instance of this class is to use the helper function `list`.
+
+```typescript
+list([1, 2, 3])
+```
+
 ## map
 
 The `map` method maps the supplied the function over items.

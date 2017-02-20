@@ -10,6 +10,7 @@ export declare class List<X> {
     chain<Y>(f: (x: X) => List<Y>): List<Y>;
     fold<A, Y>(initial?: A, f?: (accumulator: A, x: X) => A): A;
     get(): X[];
+    forEach(f: (item: X) => void): void;
     run(f: (array: X[]) => void): void;
     flatten<Y>(f: (xs: X[]) => Y): Y;
     filter(p: (x: X) => boolean): List<X>;
