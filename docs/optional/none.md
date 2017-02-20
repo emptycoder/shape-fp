@@ -2,17 +2,13 @@
 
 The `None` class represents the null case. Its counterpart is the [Some](some.md) class.
 
-The recommended way to instantiate an instance of this class is to use the `none` function and specify the type parameter, e.g.
+The recommended way to instantiate an instance of this class is to use the `none` function, e.g.
 
 ```typescript
 none<number>()
 ``` 
 
-Note that nullable values should be instantiated with the `optional` function.
-
-```typescript
-optional(potentiallyNull)
-```
+Note that none expect the type of the value that could have been wrapped to be specified.
 
 ## map
 For `None` instances, the `map` does nothing since there is no value to map over.
