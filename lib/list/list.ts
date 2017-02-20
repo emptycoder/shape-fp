@@ -9,6 +9,7 @@ import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
 import groupBy = require('lodash.groupby')
 import flatten = require('lodash.flatten')
+import reduce = require('lodash.reduce')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {none} from '../optional/none'
@@ -36,21 +37,21 @@ export class List<X> {
 
     }
 
-    fold<Y>(f : (x : X) => Y) : Y[] {
+    fold<A, Y>(initial? : A, f? : (accumulator : A, x : X) => A) : A {
 
-        return this.xs.map(f)
-
-    }
-
-    run(f : (array : X[]) => void) {
-
-        f(this.xs)
+        return reduce(this.xs, f, initial)
 
     }
 
     get () : X[] {
 
         return this.xs
+
+    }
+
+    run(f : (array : X[]) => void) {
+
+        f(this.xs)
 
     }
 
@@ -78,6 +79,12 @@ export class List<X> {
 
     }
 
+    contains(x : X) : boolean {
+
+        return includes(this.xs, x)
+
+    }
+
     indexOf(x : X) : Optional<number> {
 
         return box(indexOf(this.xs, x))
@@ -88,12 +95,6 @@ export class List<X> {
     find(p : (x : X) => boolean) : Optional<X> {
 
         return optional(find(this.xs, p))
-
-    }
-
-    contains(x : X) : boolean {
-
-        return includes(this.xs, x)
 
     }
 
@@ -108,6 +109,19 @@ export class List<X> {
         }
 
         return false
+    }
+
+    all(f : (x : X) => boolean) : boolean {
+
+        for (const x of this.xs) {
+
+            if(f(x)) {
+                return false
+            }
+
+        }
+
+        return true
     }
 
     associate<Y>(f : (x : X) => Y) : List<[X, Y]> {
@@ -129,15 +143,15 @@ export class List<X> {
 
     }
 
-    taskList<F, S>(f : (x : X) => Task<F, S>) : TaskList<F, S> {
-
-        return taskList(this.xs.map(f))
-
-    }
-
     box<Y>(f : (xs : X[]) => Y) : Box<Y> {
 
         return box(f(this.xs))
+
+    }
+
+    taskList<F, S>(f : (x : X) => Task<F, S>) : TaskList<F, S> {
+
+        return taskList(this.xs.map(f))
 
     }
 
