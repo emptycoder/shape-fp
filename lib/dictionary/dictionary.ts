@@ -1,5 +1,5 @@
 import {StringKeyObject, toObject} from '../objects/objects'
-import {StringValuePair} from '../objects/pair'
+import {StringValuePair} from '../pairs/pairs'
 import {list} from '../list/list'
 import pick = require ('lodash.pick')
 import values = require ('lodash.values')

@@ -1,4 +1,4 @@
-import {StringValuePair} from './pair'
+import {StringValuePair} from '../pairs/pairs'
 
 export interface StringKeyObject<V> {
 
