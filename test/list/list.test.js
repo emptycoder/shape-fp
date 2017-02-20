@@ -45,5 +45,18 @@ describe('List', function () {
         var instance = list_1.list([1, 1, 2]);
         chai_1.assert.deepEqual(instance.groupBy(function (x) { return x.toString(); }).get(), { '1': [1, 1], '2': [2] });
     });
+    it('should be mappable', function () {
+        var instance = list_1.list([1, 2, 3]);
+        chai_1.assert.deepEqual(instance.map(function (x) { return x + 1; }).get(), [2, 3, 4]);
+    });
+    // http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/
+    it('should be chainable', function () {
+        var f = function (x) { return list_1.list([x - 1, x, x + 1]); };
+        chai_1.assert.deepEqual(list_1.list([1, 2, 3]).chain(f).get(), [0, 1, 2, 1, 2, 3, 2, 3, 4]);
+    });
+    it('should provide the index when mapping', function () {
+        var instance = list_1.list(['a', 'b', 'c']);
+        chai_1.assert.deepEqual(instance.map(function (x, i) { return i; }).get(), [0, 1, 2]);
+    });
 });
 //# sourceMappingURL=list.test.js.map

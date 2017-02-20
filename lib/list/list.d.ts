@@ -6,11 +6,12 @@ import { Dictionary } from '../dictionary/dictionary';
 export declare class List<X> {
     private xs;
     constructor(xs: X[]);
-    map<Y>(f: (x: X) => Y): List<Y>;
-    mapIndexed<Y>(f: (x: X, i: number) => Y): List<Y>;
-    chain<Y>(f: (x: X[]) => List<Y>): List<Y>;
+    map<Y>(f: (x: X, index?: number) => Y): List<Y>;
+    chain<Y>(f: (x: X) => List<Y>): List<Y>;
     fold<Y>(f: (x: X) => Y): Y[];
+    run(f: (array: X[]) => void): void;
     get(): X[];
+    flatten<Y>(f: (xs: X[]) => Y): Y;
     filter(p: (x: X) => boolean): List<X>;
     first(): Optional<X>;
     last(): Optional<X>;
@@ -20,8 +21,6 @@ export declare class List<X> {
     any(f: (x: X) => boolean): boolean;
     associate<Y>(f: (x: X) => Y): List<[X, Y]>;
     groupBy(key: (x: X) => string): Dictionary<X[]>;
-    flatten<Y>(f: (xs: X[]) => Y): Y;
-    run(f: (array: X[]) => void): void;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
     box<Y>(f: (xs: X[]) => Y): Box<Y>;
 }

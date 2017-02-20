@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import {list} from '../../lib/list/list'
+import {list, List} from '../../lib/list/list'
 
 describe('List', () => {
 
@@ -46,8 +46,8 @@ describe('List', () => {
 
     it('should do the same thing for folding and mapping followed by getting', () => {
 
-        let instance = list([1, 2])
-        let f = x => x + 1
+        const instance = list([1, 2])
+        const f = x => x + 1
 
         assert.deepEqual(
             instance.fold(f),
@@ -57,7 +57,7 @@ describe('List', () => {
 
     it('should be able to flatten the items', () => {
 
-        let instance = list(['A', 'B'])
+        const instance = list(['A', 'B'])
 
         assert.deepEqual(
             instance.flatten(item => item.join(' ')),
@@ -67,7 +67,7 @@ describe('List', () => {
 
     it('should be able to check if a predicate is true for any member', () => {
 
-        let instance = list([1, 2, 3])
+        const instance = list([1, 2, 3])
 
         assert.isTrue(instance.any(x => x % 2 == 0))
         assert.isFalse(instance.any(x => x >= 4 ))
@@ -76,7 +76,7 @@ describe('List', () => {
 
     it('should be able to associate items', () => {
 
-        let instance = list([1, 2])
+        const instance = list([1, 2])
 
         assert.deepEqual(
             instance.associate(x => x * 2).get(),
@@ -87,7 +87,7 @@ describe('List', () => {
 
     it('should be able to groups items', () => {
 
-        let instance = list([1, 1, 2])
+        const instance = list([1, 1, 2])
 
         assert.deepEqual(
             instance.groupBy(x => x.toString()).get(),
@@ -95,5 +95,41 @@ describe('List', () => {
         )
 
     })
+
+    it('should be mappable', () => {
+
+        const instance = list([1, 2, 3])
+
+        assert.deepEqual(
+            instance.map(x => x + 1).get(),
+            [ 2, 3, 4 ]
+        )
+
+    })
+
+    // http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/
+    it('should be chainable', () => {
+
+        const f = (x : number) => list([ x-1, x, x + 1])
+
+        assert.deepEqual(
+            list([1, 2, 3]).chain(f).get(),
+            [ 0, 1, 2, 1, 2, 3, 2, 3, 4 ]
+        )
+
+    })
+
+
+    it('should provide the index when mapping', () => {
+
+        const instance = list(['a', 'b', 'c'])
+
+        assert.deepEqual(
+            instance.map((x, i) => i).get(),
+            [ 0, 1, 2 ]
+        )
+
+    })
+
 
 })

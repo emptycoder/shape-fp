@@ -8,6 +8,7 @@ import last = require('lodash.last')
 import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
 import groupBy = require('lodash.groupby')
+import flatten = require('lodash.flatten')
 import optional from '../optional/helper'
 import Optional from '../optional/optional'
 import {none} from '../optional/none'
@@ -20,21 +21,18 @@ export class List<X> {
 
     }
 
-    map<Y>(f : (x : X) => Y) : List<Y> {
+    map<Y>(f : (x : X, index? : number) => Y) : List<Y> {
 
         return new List(this.xs.map(f))
 
     }
 
-    mapIndexed<Y>(f : (x : X, i : number) => Y) : List<Y> {
+    chain<Y>(f : (x : X) => List<Y>) : List<Y> {
 
-        return new List(this.xs.map(f))
-
-    }
-
-    chain<Y>(f : (x : X[]) => List<Y>) : List<Y> {
-
-        return f(this.xs)
+        return this
+            .map(item => f(item).get()) // List<Y[]>
+            .box(items => flatten(items)) // Box<Y[]>
+            .fold(list)  // List<Y>
 
     }
 
@@ -44,9 +42,21 @@ export class List<X> {
 
     }
 
+    run(f : (array : X[]) => void) {
+
+        f(this.xs)
+
+    }
+
     get () : X[] {
 
         return this.xs
+
+    }
+
+    flatten<Y>(f : (xs : X[]) => Y) : Y {
+
+        return f(this.xs)
 
     }
 
@@ -116,18 +126,6 @@ export class List<X> {
             this.xs,
             key
         ))
-
-    }
-
-    flatten<Y>(f : (xs : X[]) => Y) : Y {
-
-        return f(this.xs)
-
-    }
-
-    run(f : (array : X[]) => void) {
-
-        f(this.xs)
 
     }
 
