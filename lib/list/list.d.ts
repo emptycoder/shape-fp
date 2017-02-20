@@ -1,8 +1,8 @@
 import { Task } from '../task/task';
 import { TaskList } from '../task/task_list';
 import { Box } from '../box/box';
-import Optional from '../optional/optional';
 import { Dictionary } from '../dictionary/dictionary';
+import { Optional } from '../optional/optional';
 export declare class List<X> {
     private xs;
     constructor(xs: X[]);

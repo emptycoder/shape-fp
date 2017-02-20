@@ -1,17 +1,9 @@
-import { assert } from 'chai';
-import optional from "../../lib/optional/helper"
+import { assert } from 'chai'
+import {optional} from '../../lib/optional/optional'
 
-describe('Optional', () => {
+describe('optional', () => {
 
-    it('should be able to get an alternative', () => {
-
-        assert.equal(
-            optional(null).orElse(1).get(),
-            1)
-
-    })
-
-    it('should be empty when null', () => {
+    it('should map null to None', () => {
 
         const option = optional(null)
 
@@ -20,7 +12,7 @@ describe('Optional', () => {
 
     })
 
-    it('should be empty when undefined', () => {
+    it('should map undefined to None', () => {
 
         const option = optional(undefined)
 
@@ -28,5 +20,20 @@ describe('Optional', () => {
         assert.isFalse(option.isDefined())
 
     })
+
+    it('should map everything else to Some', () => {
+
+        ['A', 1].forEach(x => {
+
+            const option = optional(1)
+
+            assert.isTrue(option.isDefined())
+            assert.isFalse(option.isEmpty())
+
+        })
+
+
+    })
+
 
 })

@@ -1,19 +1,23 @@
 "use strict";
 var chai_1 = require("chai");
-var helper_1 = require("../../lib/optional/helper");
-describe('Optional', function () {
-    it('should be able to get an alternative', function () {
-        chai_1.assert.equal(helper_1.default(null).orElse(1).get(), 1);
-    });
-    it('should be empty when null', function () {
-        var option = helper_1.default(null);
+var optional_1 = require("../../lib/optional/optional");
+describe('optional', function () {
+    it('should map null to None', function () {
+        var option = optional_1.optional(null);
         chai_1.assert.isTrue(option.isEmpty());
         chai_1.assert.isFalse(option.isDefined());
     });
-    it('should be empty when undefined', function () {
-        var option = helper_1.default(undefined);
+    it('should map undefined to None', function () {
+        var option = optional_1.optional(undefined);
         chai_1.assert.isTrue(option.isEmpty());
         chai_1.assert.isFalse(option.isDefined());
+    });
+    it('should map everything else to Some', function () {
+        ['A', 1].forEach(function (x) {
+            var option = optional_1.optional(1);
+            chai_1.assert.isTrue(option.isDefined());
+            chai_1.assert.isFalse(option.isEmpty());
+        });
     });
 });
 //# sourceMappingURL=optional.test.js.map

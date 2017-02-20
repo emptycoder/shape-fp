@@ -49,9 +49,11 @@ export class Some<X> implements Optional<X> {
 
     }
 
-    run(f : (x : X) => void) {
+    run(
+        onNone : () => void,
+        onSome : (x : X) => void) {
 
-        f(this.x)
+        onSome(this.x)
 
     }
 

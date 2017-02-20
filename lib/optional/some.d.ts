@@ -10,7 +10,7 @@ export declare class Some<X> implements Optional<X> {
     getOrDefault(defaultValue: X): X;
     isDefined(): boolean;
     isEmpty(): boolean;
-    run(f: (x: X) => void): void;
+    run(onNone: () => void, onSome: (x: X) => void): void;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
 export declare function some<X>(value: X): Some<X>;

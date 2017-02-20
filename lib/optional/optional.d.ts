@@ -7,7 +7,7 @@ export interface Optional<X> {
     getOrDefault(defaultValue: X): any;
     isDefined(): boolean;
     isEmpty(): boolean;
-    run(f: (x: X) => void): any;
+    run(onNone: () => void, onSome: (x: X) => void): any;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
 export declare function optional<X>(value: X | null): Optional<X>;

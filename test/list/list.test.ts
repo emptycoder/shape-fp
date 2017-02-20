@@ -1,4 +1,4 @@
-import { assert } from 'chai';
+import { assert } from 'chai'
 import {list, List} from '../../lib/list/list'
 
 describe('List', () => {

@@ -19,7 +19,9 @@ export interface Optional<X> {
 
     isEmpty() : boolean
 
-    run(f : (x : X) => void)
+    run(
+        onNone : () => void,
+        onSome : (x : X) => void)
 
     box<Y>(onNone: () => Y, onSome : (x : X) => Y) : Box<Y>
 

@@ -10,11 +10,10 @@ import includes = require('lodash.includes')
 import groupBy = require('lodash.groupby')
 import flatten = require('lodash.flatten')
 import reduce = require('lodash.reduce')
-import optional from '../optional/helper'
-import Optional from '../optional/optional'
 import {none} from '../optional/none'
 import {some} from '../optional/some'
 import {dictionary, Dictionary} from '../dictionary/dictionary'
+import {Optional, optional} from '../optional/optional'
 
 export class List<X> {
 
@@ -33,7 +32,7 @@ export class List<X> {
         return this
             .map(item => f(item).get()) // List<Y[]>
             .box(items => flatten(items)) // Box<Y[]>
-            .fold(list)  // List<Y>
+            .fold(list) // List<Y>
 
     }
 

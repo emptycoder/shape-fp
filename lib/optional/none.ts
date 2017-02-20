@@ -21,15 +21,15 @@ export class None<X> implements Optional<X> {
 
     }
 
-    getOrDefault(defaultValue : X) : X {
-
-        return defaultValue
-
-    }
-
     get() : X|null {
 
         return null
+
+    }
+
+    getOrDefault(defaultValue : X) : X {
+
+        return defaultValue
 
     }
 
@@ -45,7 +45,11 @@ export class None<X> implements Optional<X> {
 
     }
 
-    run(f : (x : X) => void) {
+    run(
+        onNone : () => void,
+        onSome : (x : X) => void) {
+
+        onNone()
 
     }
 
