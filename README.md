@@ -1,5 +1,11 @@
 # shape-fp
 
+## Installation
+
+`npm install shape-fp -S`
+
+## Table of contents
+
 - [Box](./docs/box.md)
 - [Dictionary](./docs/dictionary.md)
 - [Functions](./docs/functions.md)

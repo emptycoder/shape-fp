@@ -11,4 +11,4 @@ export declare class Box<X> {
     attempt<F, S>(f: (x: X) => Result<F, S>): Result<F, S>;
     list<Y>(f: (x: X) => Y[]): List<Y>;
 }
-export declare const box: <X>(value: X) => Box<X>;
+export declare function box<X>(value: X): Box<X>;

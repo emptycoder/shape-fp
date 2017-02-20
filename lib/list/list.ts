@@ -162,4 +162,8 @@ export class List<X> {
 
 }
 
-export const list = <X>(array : X[]) => new List(array)
+export function list <X>(array : X[]) {
+
+    return new List(array)
+
+}

@@ -51,4 +51,8 @@ export class Box<X> {
 
 }
 
-export const box = <X>(value: X) => new Box(value)
+export function box <X>(value: X) {
+
+    return new Box(value)
+
+}

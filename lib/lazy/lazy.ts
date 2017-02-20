@@ -31,4 +31,8 @@ export class Lazy<X> {
 
 }
 
-export const lazy = <X>(g: () => X) => new Lazy(g)
+export function lazy <X>(g: () => X) {
+
+    return new Lazy(g)
+
+}

@@ -6,4 +6,4 @@ export declare class Lazy<X> {
     get(): X;
     run(f: (x: X) => void): void;
 }
-export declare const lazy: <X>(g: () => X) => Lazy<X>;
+export declare function lazy<X>(g: () => X): Lazy<X>;

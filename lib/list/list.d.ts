@@ -26,4 +26,4 @@ export declare class List<X> {
     box<Y>(f: (xs: X[]) => Y): Box<Y>;
     taskList<F, S>(f: (x: X) => Task<F, S>): TaskList<F, S>;
 }
-export declare const list: <X>(array: X[]) => List<X>;
+export declare function list<X>(array: X[]): List<X>;
