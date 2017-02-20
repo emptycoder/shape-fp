@@ -1,5 +1,5 @@
-import Optional from "./optional"
 import {Box, box} from '../box/box'
+import {Optional} from './optional'
 
 export class Some<X> implements Optional<X> {
 
@@ -63,4 +63,6 @@ export class Some<X> implements Optional<X> {
 
 }
 
-export const some = <X>(value: X) => new Some(value)
+export function some <X>(value: X) {
+    return new Some(value)
+}

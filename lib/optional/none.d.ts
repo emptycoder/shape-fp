@@ -1,7 +1,6 @@
-import Optional from "./optional";
 import { Box } from '../box/box';
+import { Optional } from './optional';
 export declare class None<X> implements Optional<X> {
-    constructor();
     map<Y>(f: (x: X) => Y): None<Y>;
     fold<Y>(onNone: () => Y, onSome: (x: X) => Y): Y;
     orElse(x: X | null): Optional<X>;
@@ -12,4 +11,4 @@ export declare class None<X> implements Optional<X> {
     run(f: (x: X) => void): void;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
-export declare const none: <X>() => None<X>;
+export declare function none<X>(): None<X>;

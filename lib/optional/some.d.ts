@@ -1,5 +1,5 @@
-import Optional from "./optional";
 import { Box } from '../box/box';
+import { Optional } from './optional';
 export declare class Some<X> implements Optional<X> {
     private x;
     constructor(x: X);
@@ -13,4 +13,4 @@ export declare class Some<X> implements Optional<X> {
     run(f: (x: X) => void): void;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
-export declare const some: <X>(value: X) => Some<X>;
+export declare function some<X>(value: X): Some<X>;

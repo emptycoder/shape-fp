@@ -3,11 +3,13 @@ import {dictionary} from '../../lib/dictionary/dictionary'
 
 describe('Dictionary', () => {
 
+    const data = dictionary({ 'a': 1, 'b': 2 })
+
     it('should be able to return its keys as an array', () => {
 
         assert.deepEqual(
-            dictionary({ 'a': 1 }).keys(),
-            [ 'a' ]
+            data.keys(),
+            [ 'a', 'b' ]
         )
 
     })
@@ -15,8 +17,8 @@ describe('Dictionary', () => {
     it('should be able to return its values as an array', () => {
 
         assert.deepEqual(
-            dictionary({ 'a': 1 }).values(),
-            [ 1 ]
+            data.values(),
+            [ 1, 2 ]
         )
 
     })
@@ -24,8 +26,8 @@ describe('Dictionary', () => {
     it('should be able to return the entries it contains', () => {
 
         assert.deepEqual(
-            dictionary({ 'a': 1 }).entries(),
-            [ [ 'a', 1 ] ]
+            data.entries(),
+            [ [ 'a', 1 ], [ 'b', 2 ] ]
         )
 
     })
@@ -33,8 +35,8 @@ describe('Dictionary', () => {
     it('should be able to map over its values', () => {
 
         assert.deepEqual(
-            dictionary({ 'a': 1 }).map((k, v) => v + 1).get(),
-            { 'a': 2 }
+            data.map((k, v) => v + 1).get(),
+            { 'a': 2, 'b': 3 }
         )
 
     })
@@ -42,8 +44,8 @@ describe('Dictionary', () => {
     it('should be chainable', () => {
 
         assert.deepEqual(
-            dictionary({ 'outerKey': 'outerValue' }).chain((k, v) => dictionary({ innerKey1: 'innerValue1', innerKey2: 'innerValue2' })).get(),
-            { innerKey1: 'innerValue1', innerKey2: 'innerValue2' }
+            dictionary({ 'A': 0, 'B': 1 }).chain((k, v) => dictionary({ key1: v, key2: v },)).get(),
+            { key1: 1, key2: 1 }
         )
 
     })
@@ -56,6 +58,5 @@ describe('Dictionary', () => {
         )
 
     })
-
 
 })

@@ -1,5 +1,5 @@
 import { Box } from '../box/box';
-interface Optional<X> {
+export interface Optional<X> {
     map<Y>(f: (x: X) => Y): Optional<Y>;
     fold<Y>(onNone: () => Y, onSome: (x: X) => Y): Y;
     orElse(x: X): Optional<X>;
@@ -10,4 +10,4 @@ interface Optional<X> {
     run(f: (x: X) => void): any;
     box<Y>(onNone: () => Y, onSome: (x: X) => Y): Box<Y>;
 }
-export default Optional;
+export declare function optional<X>(value: X | null): Optional<X>;

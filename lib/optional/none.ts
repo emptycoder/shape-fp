@@ -1,12 +1,7 @@
-import Optional from "./optional"
-import optional from "./helper"
 import {Box, box} from '../box/box'
+import {Optional, optional} from './optional'
 
 export class None<X> implements Optional<X> {
-
-    constructor() {
-
-    }
 
     map<Y>(f : (x : X) => Y) : None<Y> {
 
@@ -62,4 +57,8 @@ export class None<X> implements Optional<X> {
 
 }
 
-export const none = <X>() => new None<X>()
+export function none<X>() : None<X> {
+
+    return new None<X>()
+
+}

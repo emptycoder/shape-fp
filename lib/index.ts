@@ -4,8 +4,7 @@ export { Box, box }
 import { List, list } from './list/list'
 export { List, list }
 
-import Optional from './optional/optional'
-import optional from './optional/helper'
+import { Optional, optional } from './optional/optional'
 import { Some, some } from './optional/some'
 import { None, none } from './optional/none'
 export { Optional, optional }
