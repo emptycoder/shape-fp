@@ -26,7 +26,7 @@ type NumberKeyObject<V> = {
 
 ## entries
 
-The `entries` function returns the entries of a given object as an array of [StringValuePair<V>](pairs.md).
+The `entries` function returns the entries of a given object as an array of [StringValuePair<V>](tuples.md).
  
 ```typescript
 assert.deepEqual(

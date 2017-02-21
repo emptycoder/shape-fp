@@ -1,5 +1,5 @@
 import { StringKeyObject } from '../objects/objects';
-import { StringValuePair } from '../pairs/pairs';
+import { StringValuePair } from '../tuples/pairs';
 export declare class Dictionary<V> {
     private obj;
     constructor(obj: StringKeyObject<V>);

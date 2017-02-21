@@ -1,4 +1,4 @@
-import {StringValuePair} from '../pairs/pairs'
+import {StringValuePair} from '../tuples/pairs'
 
 export type StringKeyObject<V> = {
 

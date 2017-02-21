@@ -1,6 +1,6 @@
 import { assert } from 'chai'
 import {entries, toObject} from '../../lib/objects/objects'
-import {StringValuePair} from '../../lib/pairs/pairs'
+import {StringValuePair} from '../../lib/tuples/pairs'
 
 const obj = { id: '1'}
 const pairs = [ [ 'id', '1' ] ] as StringValuePair<string>[]

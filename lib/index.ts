@@ -25,7 +25,7 @@ export { Optional, optional }
 export { Some, some }
 export { None, none }
 
-import { StringValuePair, NumberValuePair, groupStringValuePairs, groupNumberValuePairs } from './pairs/pairs'
+import { StringValuePair, NumberValuePair, groupStringValuePairs, groupNumberValuePairs } from './tuples/pairs'
 export { StringValuePair, NumberValuePair, groupStringValuePairs, groupNumberValuePairs }
 
 import { Result } from './result/result'

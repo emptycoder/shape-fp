@@ -131,11 +131,20 @@ assert.equal(list([1, 2]).find(isEven).get(), 2)
 
 ## any
 
-The `any` method returns `true` if at least one item matches the given given predicate and `false` otherwise.
+The `any` method returns `true` if at least one item matches the given predicate and `false` otherwise.
 
 ```typescript
 assert.isTrue(list([ 1, 2, 3 ]).any(isEvent))
-assert.isTrue(list([ 1, 3, 5 ]).any(isEvent))
+assert.isFalse(list([ 1, 3, 5 ]).any(isEvent))
+```
+
+## all
+
+The `all` method returns `true` if all matches the given predicate. It returns false as soon as one item fails to match the predicate. 
+
+```typescript
+assert.isTrue(list([ 2, 4, 6 ]).all(isEvent))
+assert.isFalse(list([ 2, 3, 4 ]).all(isEvent))
 ```
 
 ## associate

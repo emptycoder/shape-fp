@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import {groupNumberValuePairs, groupStringValuePairs} from '../../lib/pairs/pairs'
+import {groupNumberValuePairs, groupStringValuePairs} from '../../lib/tuples/pairs'
 
 describe('groupStringValuePairs', () => {
 

@@ -1,6 +1,8 @@
-# Pairs
+# Tuples
 
-## Type aliases
+## Pairs
+
+### Type aliases
 
 This library provides two type aliases for pairs, i.e., arrays of length 2:
 
@@ -9,7 +11,7 @@ type StringValuePair<V> = [string, V]
 type NumberValuePair<V> = [number, V]
 ```
 
-## Grouping
+### Grouping
 
 Arrays of these two types can be grouped using the first value as the group key:
 
@@ -21,4 +23,15 @@ assert.deepEqual(
 assert.deepEqual(
     groupNumberValuePairs([[1, 'A'], [2, 'B'], [1, 'C']]),
     { 1: ['A', 'C'], 2 : ['B'] })            
+```
+
+## Repetition
+
+The `repeat` functions returns an array with the given value repeated n times.
+
+```typescript
+assert.deepEqual(
+    repeat(1, 3),
+    [ 1, 1, 1 ]
+)
 ```

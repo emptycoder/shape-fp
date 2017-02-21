@@ -1,6 +1,6 @@
 "use strict";
 var chai_1 = require("chai");
-var pairs_1 = require("../../lib/pairs/pairs");
+var pairs_1 = require("../../lib/tuples/pairs");
 describe('groupStringValuePairs', function () {
     it('should map an array of pairs to an object', function () {
         chai_1.assert.deepEqual(pairs_1.groupStringValuePairs([['A', 1], ['B', 2], ['B', 3]]), { A: [1], B: [2, 3,] });
