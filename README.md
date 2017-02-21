@@ -17,7 +17,7 @@
   - [Some](./docs/optional/some.md)
 - [Pairs](./docs/pairs.md)
 - [Result](./docs/result.md)
-- [Failure](./docs/result/failure.md)
+  - [Failure](./docs/result/failure.md)
   - [Success](./docs/result/success.md)  
 - [Task](./docs/task.md)
 - [Task list](./docs/tasklist.md)

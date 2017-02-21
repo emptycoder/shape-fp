@@ -1,8 +1,8 @@
 # List
 
-The List<T> monad is a wrapper around an array of items of type T.
+The `List<T>` monad is a wrapper around an array of items of type T.
  
-The easiest way to create an instance of this class is to use the helper function `list`.
+The recommended way to create an instance of this class is to use the helper function `list`.
 
 ```typescript
 list([1, 2, 3])
@@ -10,7 +10,7 @@ list([1, 2, 3])
 
 ## map
 
-The `map` method maps the supplied the function over items.
+The `map` method maps the items of the list with the supplied function.
  
 ```typescript
 assert.equal(
@@ -18,7 +18,7 @@ assert.equal(
     [ 2, 3, 4 ]
 )
 ```
-This method provides the index of each item as an optional second parameter.
+The index of each item is provided as an optional second parameter.
 
 ```typescript
 assert.deepEqual(
@@ -42,7 +42,7 @@ assert.deepEqual(
 
 ## fold
 
-This method maps the items of the list with supplied function and then returns the new array.
+This method maps the items of the list with the supplied function and returns the result as a new array.
 
 ```typescript
 assert.deepEqual(
@@ -52,7 +52,7 @@ assert.deepEqual(
 
 ## get
 
-The `get` method return the items that the list contains.
+The `get` method returns the array of items contained by the `List` instance.
 
 ```typescript
 assert.deepEqual(
@@ -62,7 +62,7 @@ assert.deepEqual(
 
 ## run
 
-Call the `run` method to execute a side-effect on the items contained in the list.
+This method causes a side-effect using the array of items.
  
 ```typescript
 list([1, 2, 3])
@@ -81,7 +81,7 @@ assert.deepEqual(
 
 ## first
 
-To return the optional first item of the list, call the `first` method. 
+The `first` method returns the optional first item of the `List` instance. 
 
 ```typescript
 assert.isTrue(list([]).first().isEmpty())
@@ -101,7 +101,8 @@ assert.equal(list([1, 2, 3]).last().get(), 3)
 
 ## contains
 
-The `contains` method return `true` if the list contains the specified value and `false` otherwise.
+The `contains` method returns `true` if the list contains the specified value and `false` otherwise.
+
 ```typescript
 assert.isTrue(list([1, 2]).contains(2))
 assert.isNotTrue(list([1, 2]).contains(3))
@@ -109,7 +110,7 @@ assert.isNotTrue(list([1, 2]).contains(3))
 
 ## indexOf
 
-This method optionally returns the first index of the specified value.
+This method optionally returns the index of the first item that is equal to the specified value.
 
 ```typescript
 assert.equal(list([1, 2]).indexOf(1).get(), 0)
@@ -118,7 +119,7 @@ assert.isTrue(list([1, 2]).indexOf(3).isEmpty())
 
 ## find
 
-The `find` method returns the first item that matches a given predicate as an option.
+The `find` method optionally returns the first item that matches a given predicate.
 
 ```typescript
 const isEven = (x : number) => x % 2 == 0
@@ -130,7 +131,7 @@ assert.equal(list([1, 2]).find(isEven).get(), 2)
 
 ## any
 
-The `any` method returns true if any item matches the given given predicate, and `false` otherwise.
+The `any` method returns `true` if at least one item matches the given given predicate and `false` otherwise.
 
 ```typescript
 assert.isTrue(list([ 1, 2, 3 ]).any(isEvent))
@@ -139,7 +140,7 @@ assert.isTrue(list([ 1, 3, 5 ]).any(isEvent))
 
 ## associate
 
-The `associate` method returns a new list where each item of the existing item is paired with the result of the item mapped over the supplied function.
+The `associate` method returns a new list where each existing item is paired with the result of the item mapped over the supplied function.
 
 ```typescript
 assert.deepEqual(
@@ -150,7 +151,7 @@ assert.deepEqual(
 
 ## groupBy
 
-The `groupBy` method return a new list with the items arranged as groups based on a key that is computed for every item using the supplied function.
+The `groupBy` method returns a new list with the items arranged as groups based on a key that is computed for every item using the supplied function.
  
 ```typescript
 assert.deepEqual(
@@ -163,4 +164,4 @@ assert.deepEqual(
 The `box` method returns a box with the items of the list flattened by the supplied function.
 
 ## taskList
-The `taskList` method maps all list items to tasks and returns contained in a TaskList instance.
+The `taskList` method maps each items to a [Task](task.md) instance and returns the resulting array wrapped in a [TaskList](tasklist.md) instance.

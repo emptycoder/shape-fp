@@ -44,8 +44,8 @@ describe('Dictionary', () => {
     it('should be chainable', () => {
 
         assert.deepEqual(
-            dictionary({ 'A': 0, 'B': 1 }).chain((k, v) => dictionary({ key1: v, key2: v },)).get(),
-            { key1: 1, key2: 1 }
+            data.chain((k, v) => dictionary({ key1: v, key2: v })).get(),
+            { key1: 2, key2: 2 }
         )
 
     })
@@ -53,8 +53,8 @@ describe('Dictionary', () => {
     it('should be foldable', () => {
 
         assert.deepEqual(
-            dictionary({ 'a': 1 }).fold((k, v) => v + 1),
-            { 'a': 2 }
+            data.fold((k, v) => v + 1),
+            { 'a': 2, 'b': 3 }
         )
 
     })

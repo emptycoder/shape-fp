@@ -8,13 +8,13 @@ box(x)
 
 ## map
 
-The `map` method applies a function to the value and returns the output in a new box.
+The `map` method applies a function to the value and returns the result in a new box.
 
 ## chain
 
-The `chain` method expects a function as input that maps the value to a new box.
+The `chain` method expects a function that maps the value to a new box as input.
 
-This makes it easier to avoid boxes of boxes in nested computation.
+This makes it easy to avoid boxes of boxes in nested computation.
 
 ```typescript
 box(x)
@@ -43,7 +43,7 @@ box(x)
 
 ## fold
 
-`fold` applies a function to the value and returns the output rather than the box.
+`fold` applies a function to the value and returns the result rather than the box.
 
 ```typescript
 
@@ -73,14 +73,14 @@ box(x).fold(identity)
 
 ## run
 
-`run` applies a function the value without returning anything. This is used to execute a side-effect on the value.
+`run` applies a function to the value inside the box without returning anything. This is used to cause a side-effect.
 
 ## attempt
 
-This `attempt` method expects a function as input that maps the value to an instance of the [Result](./result.md) class. 
+The `attempt` method expects a function that maps the value to an instance of the [Result](./result.md) class as input. 
 
-This used to execute something over the value that might fail.
+This is used to execute something over the boxed value that might fail.
  
 ## list
 
-`list` maps the value to an array wrapped around a [List](./list.md).
+`list` maps the value to an array wrapped around a [List](./list.md) instance.

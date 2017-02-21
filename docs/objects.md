@@ -4,7 +4,7 @@
 
 This library provides two type aliases for objects.
 
-The first type alias can be used for object with string keys:
+The firs alias can be used for object with string keys:
 
 ```typescript
 type StringKeyObject<V> = {
@@ -37,7 +37,7 @@ assert.deepEqual(
 
 ##
 
-The `toObject` function is the inverse of `entries`. It maps an array of `StringValuePair<V>` to an object.
+The `toObject` function is the inverse of `entries`. It maps an array of `StringValuePair<V>` items to an object.
 
 ```typescript
 assert.deepEqual(

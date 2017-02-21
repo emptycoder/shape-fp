@@ -21,7 +21,7 @@ assert.deepEqual(
 
 ## keys
 
-The `keys` method returns the keys of the object.
+The `keys` method returns the keys of the object as an array of strings.
 
 ```typescript
 assert.deepEqual(
@@ -32,7 +32,7 @@ assert.deepEqual(
 
 ## values
 
-The `values` method returns the values of the object.
+The `values` method returns the values of the object as an array of type V.
 
 ```typescript
 assert.deepEqual(
@@ -47,7 +47,7 @@ Dictionaries can `map` over their entries:
 
 ```typescript
 assert.deepEqual(
-    data.map((k, v) => v + 1).get(),
+    dictionary({ 'a': 1, 'b': 2 }).map((k, v) => v + 1).get(),
     { 'a': 2, 'b': 3 }
 )
 ```
@@ -56,22 +56,22 @@ assert.deepEqual(
 
 The `chain` method first maps each key/value pair to a Dictionary instance and then flattens the dictionary of dictionaries.
 
-Note that later key/value pairs will override earlier pairs with the same key.
+Note that later key/value pairs will override earlier entries with the same key.
 
 ```typescript
 assert.deepEqual(
-    dictionary({ 'A': 0, 'B': 1 }).chain((k, v) => dictionary({ key1: v, key2: v },)).get(),
-    { key1: 1, key2: 1 }
+    dictionary({ 'a': 1, 'b': 2 }).chain((k, v) => dictionary({ key1: v, key2: v },)).get(),
+    { key1: 2, key2: 2 }
 )
 ```
 
 ## fold
 
-The `fold` methods works by first mapping the values over the key/value pairs using the supplied function and then returning the new dictionary.
+The `fold` methods works by first mapping the entries using the supplied function and then returning a new dictionary composed of the mapped entries.
 
 ```typescript
 assert.deepEqual(
-    dictionary({ 'A': 0, 'B': 1 }).chain((k, v) => dictionary({ key1: v, key2: v },)).get(),
-    { key1: 1, key2: 1 }
+    dictionary({ 'a': 1, 'b': 2 }).fold((k, v) => v + 1),
+    { 'a': 2, 'b': 3 }
 )
 ```

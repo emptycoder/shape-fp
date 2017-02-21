@@ -1,8 +1,8 @@
 # Lazy
 
-`Lazy` is a container of a function that enables delayed computation.
+`Lazy` is a container of a parameterless function that provides a functional approach to delayed computation.
 
-An instance of Lazy can be created through the helper function `lazy` which expects a function parameter:
+An instance of this function can be created through the helper function `lazy`:
 
 ```typescript
 lazy(() => ...) 
@@ -10,39 +10,39 @@ lazy(() => ...)
 
 ## map
 
-The `map` is used to build a chain of delayed computation. It takes the current function and returns a new instance of `Lazy` with a new higher-level function that, once it is executed, first executes the lower-level function before processing its results.  
+The `map` method is used to build a chain of delayed computation. It takes the current function and returns a new instance of `Lazy` with a higher-level function that, once it is executed, first calls the lower-level function and then processes its result.  
 
 ```typescript
 const delayedComputation = lazy(() => 1)
     .map((x) => x + 1)
 ```
 
-The computation in this example is delayed until the `fold` method or the `get`method is called. 
+The computation is delayed until the `fold` method or the `get` method is called. 
 
 ## fold
 
-The `fold` method takes a function parameter, first executes the chain of delayed computation, processes the result with the function has has been passed and finally returns the result.
+The `fold` method executes the chain of delayed computation, maps the result using the supplied function and, finally, returns the final value.
 
 ## get
 
-The `get` method finally executes the chain of computation that has been built up and returns the result.
+The `get` method executes the chain of computation and returns the result without a map. 
   
 ```typescript
 assert.equal(
-    lazy(() => 1).map((x) => x + 1).get(),
+    lazy(() => 1).get(),
     2) 
 ```
 
-This is equivalent to:
+This is equivalent to calling the `fold`with the [identity function](./functions.md):
 ```typescript
 assert.equal(
-    lazy(() => 1).fold((x) => x + 1),
+    lazy(() => 1).fold(identity),
     2) 
 ```
 
 ## run
 
-The `run` method processes the chain of delayed computation and then executes a side-effect on the result.
+The `run` method processes the chain of delayed computation and then causes a side-effect using result.
 
 ```typescript
 lazy(() => 1)

@@ -1,7 +1,7 @@
 # Functions
 
 ## forward
-The `forward` function takes two function parameters, f and g, and returns a new higher-order function that first applies f and then applies g.
+The `forward` function takes two functions, f and g, and returns a new higher-order function that first applies f and then applies g.
 
 ```typescript
 const increment = x => x + 1
