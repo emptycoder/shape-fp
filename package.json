@@ -3,6 +3,7 @@
   "version": "0.9.22",
   "description": "Functional programming library for TypeScript",
   "keywords": [
+    "typescript",
     "functional",
     "functional-programming",
     "fp",
