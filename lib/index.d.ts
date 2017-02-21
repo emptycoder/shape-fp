@@ -20,6 +20,8 @@ export { Some, some };
 export { None, none };
 import { StringValuePair, NumberValuePair, groupStringValuePairs, groupNumberValuePairs } from './tuples/pairs';
 export { StringValuePair, NumberValuePair, groupStringValuePairs, groupNumberValuePairs };
+import { repeat } from './tuples/repetition';
+export { repeat };
 import { Result } from './result/result';
 import { tryCatch } from './result/helper';
 import { Success, success } from './result/success';
