@@ -1,12 +1,12 @@
 import {StringValuePair} from '../pairs/pairs'
 
-export interface StringKeyObject<V> {
+export type StringKeyObject<V> = {
 
     [index: string]: V
 
 }
 
-export interface NumberKeyObject<V> {
+export type NumberKeyObject<V> = {
 
     [index: number]: V
 
@@ -16,7 +16,7 @@ export function entries<V>(obj : StringKeyObject<V>) : StringValuePair<V>[] {
 
     return Object.keys(obj).map(key =>
 
-        [ key, obj[key] ] as [string, V]
+        [ key, obj[key] ] as StringValuePair<V>
 
     )
 }

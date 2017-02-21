@@ -5,8 +5,8 @@
 This library provides two type aliases for pairs, i.e., arrays of length 2:
 
 ```typescript
-StringValuePair<V> = [string, V]
-NumberValuePair<V> = [number, V]
+type StringValuePair<V> = [string, V]
+type NumberValuePair<V> = [number, V]
 ```
 
 ## Grouping
