@@ -17,7 +17,7 @@ describe('List', function () {
         chai_1.assert.deepEqual(list_1.list([1, 2, 3]).chain(f).get(), [0, 1, 2, 1, 2, 3, 2, 3, 4]);
     });
     it('should be able to fold', function () {
-        chai_1.assert.deepEqual(list_1.list([1, 2]).fold(0, function (accumulator, x) { return accumulator + x; }), 3);
+        chai_1.assert.deepEqual(list_1.list([1, 2, 3]).fold(function (accumulator, x) { return accumulator + x; }, 0), 6);
     });
     it('should be able to filter', function () {
         chai_1.assert.deepEqual(list_1.list([1, 2, 3, 4]).filter(function (x) { return x % 2 == 0; }).get(), [2, 4]);

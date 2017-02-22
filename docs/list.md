@@ -42,13 +42,15 @@ assert.deepEqual(
 
 ## fold
 
-This method maps the items of the list with the supplied function and returns the result as a new array.
+The map function takes two arguments: a function that combines an accumulated result with an item into a new accumulator value and, secondly, an initial accumulator value
 
 ```typescript
 assert.deepEqual(
-    list([1, 2, 3]).fold(x => x + 1),
-    [2, 3, 4])
+    list([1, 2, 3]).fold((accumulator, x) => accumulator + x, 0),
+    6)
 ```
+
+The supplied is provided access to three values: the accumulated result, the current item and, optionally, the index of the current item. 
 
 ## get
 

@@ -1,6 +1,6 @@
 {
   "name": "shape-fp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Functional programming library for TypeScript",
   "keywords": [
     "typescript",
@@ -44,7 +44,6 @@
     "@types/lodash.isnil": "^4.0.0",
     "@types/lodash.last": "^3.0.0",
     "@types/lodash.pick": "^4.4.1",
-    "@types/lodash.reduce": "^4.6.1",
     "@types/lodash.tail": "^4.1.1",
     "@types/lodash.topairs": "^4.3.1",
     "@types/lodash.values": "^4.3.1",
@@ -66,7 +65,6 @@
     "lodash.isnil": "^4.0.0",
     "lodash.last": "^3.0.0",
     "lodash.pick": "^4.4.0",
-    "lodash.reduce": "^4.6.0",
     "lodash.tail": "^4.1.1",
     "lodash.topairs": "^4.3.0",
     "lodash.values": "^4.3.0",

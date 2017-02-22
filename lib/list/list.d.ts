@@ -8,7 +8,7 @@ export declare class List<X> {
     constructor(xs: X[]);
     map<Y>(f: (x: X, index?: number) => Y): List<Y>;
     chain<Y>(f: (x: X) => List<Y>): List<Y>;
-    fold<A, Y>(initial?: A, f?: (accumulator: A, x: X) => A): A;
+    fold<A, Y>(f: (accumulator: A, x: X, index?: number) => A, initial: A): A;
     get(): X[];
     forEach(f: (item: X) => void): void;
     run(f: (array: X[]) => void): void;

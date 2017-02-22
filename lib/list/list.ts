@@ -9,7 +9,6 @@ import indexOf = require('lodash.indexof')
 import includes = require('lodash.includes')
 import groupBy = require('lodash.groupby')
 import flatten = require('lodash.flatten')
-import reduce = require('lodash.reduce')
 import {none} from '../optional/none'
 import {some} from '../optional/some'
 import {dictionary, Dictionary} from '../dictionary/dictionary'
@@ -36,9 +35,9 @@ export class List<X> {
 
     }
 
-    fold<A, Y>(initial? : A, f? : (accumulator : A, x : X) => A) : A {
+    fold<A, Y>(f : (accumulator : A, x : X, index? : number) => A, initial : A) : A {
 
-        return reduce(this.xs, f, initial)
+        return this.xs.reduce(f, initial)
 
     }
 

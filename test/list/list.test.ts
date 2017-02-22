@@ -42,8 +42,8 @@ describe('List', () => {
     it('should be able to fold', () => {
 
         assert.deepEqual(
-            list([1, 2]).fold(0, (accumulator, x) => accumulator + x),
-            3)
+            list([1, 2, 3]).fold((accumulator, x) => accumulator + x, 0),
+            6)
 
     })
 
